@@ -22,13 +22,13 @@ $(function() {
       },
       // Specify validation error messages
       messages: {
-        firstname: "Please enter your firstname",
-        lastname: "Please enter your lastname",
+        nombre: "Introduce tu nombre",
+        lastname: "Introduce tu apellido",
         password: {
-          required: "Please provide a password",
-          minlength: "Your password must be at least 5 characters long"
+          required: "Introduzca una contraseña",
+          minlength: "La contraseña debe tener, al menos, 8 caracteres"
         },
-        email: "Please enter a valid email address"
+        email: "Introduzca un correo válido."
       },
       // Make sure the form is submitted to the destination defined
       // in the "action" attribute of the form when valid
