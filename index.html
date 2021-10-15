@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="">
+        <form action="" name="registration">
             <h1>Solicitud de servicios</h1>
 
             <p class="title">DATOS ACTÚA COMO REPRESENTANTE</p>
@@ -51,7 +51,7 @@
                         <label for="numero_identificacion" class="form-label">
                             Nº de identifiación: (*)
                         </label>
-                        <input type="text" class="form-control" id="numero_identificacion" placeholder="Ej: 12345678Z / Z1234567X">
+                        <input type="text" name="numero_identificacion" class="form-control" id="numero_identificacion" placeholder="Ej: 12345678Z / Z1234567X">
                     </div>
                 </div>
                 <div class="col-5">
@@ -59,7 +59,7 @@
                         <label for="nombre" class="form-label">
                             Nombre: (*)
                         </label>
-                        <input type="text" class="form-control" id="nombre">
+                        <input type="text" name="nombre" class="form-control" id="nombre">
                     </div>
                 </div>
             </div>
@@ -138,5 +138,9 @@
 
         </form>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="js/validation"></script>
 </body>
 </html>
