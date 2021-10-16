@@ -11,6 +11,7 @@
 </head>
 <body>
     <div class="container">
+<<<<<<< Updated upstream
         <form action="" name="registration">
             <h1>Solicitud de servicios</h1>
 
@@ -142,5 +143,603 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="js/validation"></script>
+=======
+        <form action="">
+            <h1>Solicitud de servicios</h1>
+
+            <p class="title mt-3">DATOS ACTÚA COMO REPRESENTANTE</p>
+
+            <div class="content">
+                <p class="text-justify">¿Actúa como representante?</p>
+                <div class="form-check representante">
+                    <input class="form-check-input" type="radio" name="actua_representante" id="alumno">
+                    <label class="form-check-label" for="alumno">
+                        Alumno/a
+                    </label>
+                </div>
+                <div class="form-check representante">
+                    <input class="form-check-input" type="radio" name="actua_representante" id="representante">
+                    <label class="form-check-label" for="representante">
+                        Representante
+                    </label>
+                </div>
+            </div>
+        
+        
+            <p class="title mt-3">DATOS DEL REPRESENTANTE</p>
+
+            <div class="content">
+                <div class="row mt-3">
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="tipo_documento" class="form-label">
+                                Tipo de documento: (*)
+                            </label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="numero_identificacion" class="form-label">
+                                Nº de identifiación: (*)
+                            </label>
+                            <input type="text" class="form-control" id="numero_identificacion" placeholder="Ej: 12345678Z / Z1234567X">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="form-group">
+                            <label for="nombre" class="form-label">
+                                Nombre: (*)
+                            </label>
+                            <input type="text" class="form-control" id="nombre">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="primer_apellido" class="form-label">
+                                Primer apellido: (*)
+                            </label>
+                            <input type="text" class="form-control" id="primer_apellido" placeholder="Ej: 12345678Z / Z1234567X">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="segundo_apellido" class="form-label">
+                                Segundo apellido: (*)
+                            </label>
+                            <input type="text" class="form-control" id="segundo_apellido">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="en_calidad_de" class="form-label">
+                                En calidad de: (*)
+                            </label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="telefono_fijo" class="form-label">
+                                Teléfono fijo:
+                            </label>
+                            <input type="text" class="form-control" id="telefono_fijo" placeholder="920 000 000">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="telefono_movil" class="form-label">
+                                Teléfono móvil: (*)
+                            </label>
+                            <input type="text" class="form-control" id="telefono_movil" placeholder="666 000 000">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                Correo electrónico: (*)
+                            </label>
+                            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <p class="title mt-3">DOMICILIO DE CONTACTO</p>
+
+            <div class="content">
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="tipo_de_via" class="form-label">
+                                Tipo de vía: (*)
+                            </label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="nombre_de_via" class="form-label">
+                                Nombre de vía: (*)
+                            </label>
+                            <input type="text" class="form-control" id="nombre_de_via">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="numero_de_via" class="form-label">
+                                Número: (*)
+                            </label>
+                            <input type="number" class="form-control" id="numero_de_via">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="bloque" class="form-label">
+                                Bloque:
+                            </label>
+                            <input type="text" class="form-control" id="bloque">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="escalera" class="form-label">
+                                Escalera:
+                            </label>
+                            <input type="text" class="form-control" id="escalera">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="piso" class="form-label">
+                                Piso:
+                            </label>
+                            <input type="text" class="form-control" id="piso">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="portal" class="form-label">
+                                Portal:
+                            </label>
+                            <input type="text" class="form-control" id="portal">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="letra" class="form-label">
+                                Letra:
+                            </label>
+                            <input type="text" class="form-control" id="letra">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="puerta" class="form-label">
+                                Puerta:
+                            </label>
+                            <input type="text" class="form-control" id="puerta">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="complemento" class="form-label">
+                                Complemento: (*)
+                            </label>
+                            <input type="text" class="form-control" id="complemento">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="fecha" class="form-label">
+                                Fecha: (*)
+                            </label>
+                            <input type="date" class="form-control" id="fecha">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="pais" class="form-label">
+                                País: (*)
+                            </label>
+                            <select class="form-select" aria-label="Seleccionar país">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="puerta" class="form-label">
+                                Provincia: (*)
+                            </label>
+                            <select class="form-select" aria-label="Seleccionar provincia">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="isla" class="form-label">
+                                Isla: (*)
+                            </label>
+                            <select class="form-select" aria-label="Seleccionar isla">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="municipio" class="form-label">
+                                Municipio: (*)
+                            </label>
+                            <select class="form-select" aria-label="Seleccionar municipio">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="localidad" class="form-label">
+                                Localidad: (*)
+                            </label>
+                            <select class="form-select" aria-label="Seleccionar localidad">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="puerta" class="form-label">
+                                Código postal: (*)
+                            </label>
+                            <select class="form-select" aria-label="Seleccionar código postal">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <p class="title mt-3">MÁS DATOS</p>
+
+            <div class="content">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="alumno_huerfano">
+                    <label class="form-check-label" for="alumno_huerfano">
+                        El alumno es huérfano absoluto.
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="alumno_tutelado" checked>
+                    <label class="form-check-label" for="alumno_tutelado">
+                        El alumno se encuentra en régimen de tutela y guarda por la Administración.
+                    </label>
+                </div>
+            </div>
+        
+        
+            <p class="title mt-3">ALERGIAS, PATOLOGÍAS O DIETAS ESPECIALES</p>
+
+            <div class="content">
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Otras alergias:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </div>
+        
+        
+            <p class="title mt-3">DATOS CADÉMICOS DEL ALUMNO o ALUMNA</p>
+
+            <div class="content">
+                <p class="text-justify">Seleccione opción (seleccionar 1):</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ciencias" id="de_la_salud">
+                    <label class="form-check-label" for="de_la_salud">
+                        ITINERARIO: CIENCIAS DE LA SALUD.
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ciencias" id="tecnologico">
+                    <label class="form-check-label" for="tecnologico">
+                        ITINERARIO: CIENTÍFICO-TECNOLÓGICO.
+                    </label>
+                </div>
+
+                <p class="text-justify mt-3">Bloque 1 (seleccionar 6) (máximo 6) y ordenar por preferencia:</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Lengua Castellana y Literatura I" id="asignatura_lengua_castellana_y_literatura_i">
+                    <label class="form-check-label" for="asignatura_lengua_castellana_y_literatura_i">
+                        Lengua Castellana y Literatura I
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Filosofía" id="asignatura_filosofia">
+                    <label class="form-check-label" for="asignatura_filosofia">
+                        Filosofía
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Educación Física" id="asignatura_educacion_fisica">
+                    <label class="form-check-label" for="asignatura_educacion_fisica">
+                        Educación Física
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Matemáticas I" id="asignatura_matematicas_i">
+                    <label class="form-check-label" for="asignatura_matematicas_i">
+                        Matemáticas I
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Física y Química" id="asignatura_fisica_y_quimica">
+                    <label class="form-check-label" for="asignatura_fisica_y_quimica">
+                        Física y Química
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Tutoría" id="asignatura_tutoria">
+                    <label class="form-check-label" for="asignatura_tutoria">
+                        Tutoría
+                    </label>
+                </div>
+
+                <p class="text-justify mt-3">Bloque 2 (seleccionar 1):</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_2" id="ingles_i">
+                    <label class="form-check-label" for="ingles_i">
+                        Primera lengua extranjera (inglés) I
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_2" id="italiano_i">
+                    <label class="form-check-label" for="italiano_i">
+                        Primera lengua extranjera (italiano) I
+                    </label>
+                </div>
+
+                <p class="text-justify mt-3">Bloque 3 (seleccionar 1):</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_3" id="biologia_y_geologia">
+                    <label class="form-check-label" for="biologia_y_geologia">
+                        Biología y Geología
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_3" id="dibujo_tecnico_i">
+                    <label class="form-check-label" for="dibujo_tecnico_i">
+                        Dibujo Técnico I
+                    </label>
+                </div>
+
+                <p class="text-justify mt-3">Bloque 4 (seleccionar 1):</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_4" id="tecnologia_industrial_i">
+                    <label class="form-check-label" for="tecnologia_industrial_i">
+                        Tecnología Industrial I
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_4" id="cultura_cientifica">
+                    <label class="form-check-label" for="cultura_cientifica">
+                        Cultura Científica
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_4" id="segunda_lengua_extranjera_ingles_i">
+                    <label class="form-check-label" for="segunda_lengua_extranjera_ingles_i">
+                        Segunda lengua extranjera (Inglés) I
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_4" id="biologia_y_geologia_e">
+                    <label class="form-check-label" for="biologia_y_geologia_e">
+                        Biología y Gelogía (E)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_4" id="dibujo_tecnico_i_e">
+                    <label class="form-check-label" for="dibujo_tecnico_i_e">
+                        Dibujo Técnico I (E)
+                    </label>
+                </div>
+
+                <p class="text-justify mt-3">Bloque 5 (seleccionar 1):</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_5" id="religion_catolica">
+                    <label class="form-check-label" for="religion_catolica">
+                        Religión Católica
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bloque_5" id="tecnologias_de_la_informacion_y_la_comunicacion_i">
+                    <label class="form-check-label" for="tecnologias_de_la_informacion_y_la_comunicacion_i">
+                        Tecnologías de la información y la comunicación I
+                    </label>
+                </div>
+            </div>
+        
+        
+            <p class="title mt-3">MEDIOS DE DIFUSIÓN</p>
+
+            <div class="content">
+                <p class="text-justify">
+                    CONSENTIMIENTO INFORMADO TRATAMIENTO DE IMÁGENES/VOZ DEL ALUMNO EN CENTROS DOCENTES DE TITULARIDAD PÚBLICA DE LA CONSEJERÍA DE EDUCACIÓN, UNIVERSIDADES, CULTURA Y DEPORTES.
+                </p>
+                <p class="text-justify">
+                    De acuerdo con el Reglamento General de Protección de Datos y la Ley Orgánica 3 / 2018, de 5 de diciembre, de Protección de Datos Personales y Garantías de los Derechos Digitales, mediante la firma del presente documento se presta voluntariamente el consentimiento inequivoco e informado y se autoriza expresamente al centro docente al "tratamiento de imagen / voz de actividades de los centros de titularidad pública", mediante los siguientes medios (sólo se extenderá la difusión de imágenes / voz) por los medios expresados marcados a continuación.
+                </p>
+
+                <div class="form-check representante mt-3">
+                    <input class="form-check-input" type="radio" name="consciente" id="es_consciente">
+                    <label class="form-check-label" for="es_consciente">
+                        Consciente
+                    </label>
+                </div>
+                <div class="form-check representante">
+                    <input class="form-check-input" type="radio" name="consciente" id="no_consciente">
+                    <label class="form-check-label" for="no_consciente">
+                        No consciente
+                    </label>
+                </div>
+
+                <div class="row mt-3">
+                    <p class="col-6">Página web del centro docente:</p>
+                    <div class="col-3 form-check">
+                        <input class="form-check-input" type="radio" name="pagina_consciente" id="pagina_es_consciente">
+                        <label class="form-check-label" for="pagina_es_consciente">
+                            Consciente
+                        </label>
+                    </div>
+                    <div class="col-3 form-check">
+                        <input class="form-check-input" type="radio" name="pagina_consciente" id="pagina_no_consciente">
+                        <label class="form-check-label" for="pagina_no_consciente">
+                            No consciente
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p class="col-6">App de alumnos y familias:</p>
+                    <div class="col-3 form-check">
+                        <input class="form-check-input" type="radio" name="app_consciente" id="app_es_consciente">
+                        <label class="form-check-label" for="app_es_consciente">
+                            Consciente
+                        </label>
+                    </div>
+                    <div class="col-3 form-check">
+                        <input class="form-check-input" type="radio" name="app_consciente" id="app_no_consciente">
+                        <label class="form-check-label" for="app_no_consciente">
+                            No consciente
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p class="col-6">Facebook:</p>
+                    <div class="col-3 form-check">
+                        <input class="form-check-input" type="radio" name="facebook_consciente" id="facebook_es_consciente">
+                        <label class="form-check-label" for="facebook_es_consciente">
+                            Consciente
+                        </label>
+                    </div>
+                    <div class="col-3 form-check">
+                        <input class="form-check-input" type="radio" name="facebook_consciente" id="facebook_no_consciente">
+                        <label class="form-check-label" for="facebook_no_consciente">
+                            No consciente
+                        </label>
+                    </div>
+                </div>
+
+                <p class="text-justify mt-3">
+                    El consentimiento aquí otorgado podrá ser revocado en cualquier momento ante el propio centro docente, teniendo en cuenta que dicha revocación no sufrirá efectos retroactivos.
+                </p>
+            </div>
+        
+        
+            <p class="title mt-3">Documentos Adjuntos</p>
+
+            <div class="alert alert-warning" role="alert">
+                <p class="text-justify">Aviso:</p>
+                <ul>
+                    <li>Los formatos permitidos son <span class="font-weight-bold">jpg, png, txt, odt, pdf, jpeg, doc, docx.</span></li>
+                    <li>El tamaño máximo por fichero es de <span class="font-weight-bold">10MB</span>.</li>
+                    <li>El nombre de los ficheros no debe incluir carácteres acentuados, carácteres con diéresis, la eñe o carácteres especiales <span class="font-weight-bold">! " # $ & ' * + , . / ; < - > ? @ [ ] ( ) ^ ' { | }</span>.</li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <p class="subtitule">
+                    Lista de documentos pendientes:
+                </p>
+
+                <div class="content">
+                    <div class="row">
+                        <p class="col-6 font-weight-bold">Documento</p>
+                        <p class="col-6 font-weight-bold text-right">Acciones</p>
+                    </div>
+
+                    <div class="row">
+                        <p class="col-7 text-justify">DNI del alumno o alumna (o de los padres, madres o tutores legales de alumnado sin DNI) (SOLO ALUMNADO NUEVO).</p>
+                        <div class="col-5 custom-file">
+                            <div class="row">
+                                <input type="file" class="col-7 custom-file-input" id="dni_representante">
+                                <label class="col-5 btn btn-primary custom-file-label" for="dni_representante">Choose file...</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="col-7 text-justify">Para el alumnado procediente de otros centros, certificación académica del centro de origen en el que se especifique la promoción de curso o la terminación de estudios con propuesta para titulación.</p>
+                        <div class="col-5 custom-file">
+                            <div class="row">
+                                <input type="file" class="col-7 custom-file-input" id="origen_curso">
+                                <label class="col-5 btn btn-primary custom-file-label" for="origen_curso">Choose file...</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary mr-9">Procesar</button>
+                    <button type="cancel" class="btn btn-primary ml-9">Cancelar</button>
+                </div>
+            </div>
+  
+        </form>
+    </div>
+>>>>>>> Stashed changes
 </body>
 </html>
