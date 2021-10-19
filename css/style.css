@@ -64,8 +64,14 @@ label {
     display: inline-block;
 }
 
-/*
 .hidden-input {
+    /*
     visibility: hidden;
+    */
 }
-*/
+
+.isla-hidden {
+    /*
+    display: none;
+    */
+}

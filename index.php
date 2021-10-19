@@ -104,18 +104,55 @@
         return false;
     }
 
-    function validateFile($file) {
-        if(!is_file($file)) {
-            return "No es un fichero.";
-        } else if ($file['size'] > 10485760) {
-            return "El archivo es demasiado grande.";
-        }
+    /*
+     * Validamos los ficheros de la siguiente forma:
+     *      1. Nos seguramos de que el archivo esté declarado isset($file);
+     *      2. Si la extensión no está incluida en $valid_formats es erróneo.
+     *      3. Si el archivo es mayor a 10485760B o 10MB hay un error.
+     *      4. Si hay carácteres especiales: ! " # $ & ' * + , . / ; < - > ? @ [ ] ( ) ^ ' { | }. dará error.
+     *      5. Para asegurarnos de que se vean todos los mensajes, el $error
+     *         nos permitirá retornar falso una vez termine de recorrer todas las posibilidades.
+     */
+    function validateFile($file,$nombre) {
+        $valid_formats = Array ('jpg', 'png', 'doc', 'docx', 'txt', 'pdf', 'odt');
+        $error = false;
 
-        echo pathinfo($file);
+        if(isset($file)) {
+            $name       = $file['name'];  
+            $size       = $file['size'];
+
+            $extension = pathinfo($name, PATHINFO_EXTENSION);
+            if (!in_array($extension, $valid_formats)) {
+                echo "El archivo ".$nombre." tiene una extensión errónea: ".$extension.".<br />";
+                $error = true;
+            }
+            if($size > 10485760) {
+                echo "El archivo ".$nombre." tiene un tamaño superior a 10MB.<br />";
+                $error = true;
+            }
+            if (preg_match('/[\'^£$%&*()}{#~?><>,|+¬-]/', $name)) {
+                echo "El archivo ".$nombre." no puede tener carácteres especiales: ! \" # $ & ' * + , . / ; < - > ? @ [ ] ( ) ^ '\ { | } .<br />";
+                $error = true;
+            }
+            if($error) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    function generarSelect($datos, $name, $id, $field){
+        $text = '<select name="'.$name.' id="'.$name.'" class="form-select" aria-label="Seleccionar '.$name.'">';
+        $text .= '<option value="">Seleccione una opción.</option>';
+        foreach ($datos as $dato) {
+            $text .= '<option value="'.$dato[$id].'">'.$dato[$field].'</option>';
+        }
+        $text .= '</select>';
+        return $text;
     }
 
 ?>
-<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
     <div class="container">
         <?php
         /*
@@ -420,37 +457,27 @@
                 //  *********** DOCUMENTOS ADJUNTOS
 
                 // DNI DEL ALUMNO:
-
-                if(isset($_POST['archivo_dni'])){
-                    if(isset($_FILES['archivo_dni'])) {
-                        echo 1;
-                    } else {
-                        echo 2;
-                    }
-
-                    $name       = $_FILES['archivo_dni']['name'];  
-                    $temp_name  = $_FILES['archivo_dni']['tmp_name'];
-                    if(isset($name) && !empty($name)){
-                        $location = '../uploads/';      
-                        if(move_uploaded_file($temp_name, $location.$name)){
-                            echo 'File uploaded successfully';
-                        }
-                    } else {
-                        echo 'You should select a file to upload !!';
+                // El error == 0 nos indica que no han habido errores de subida.
+                if(isset($_FILES['archivo_dni']) && $_FILES['archivo_dni']['error'] == 0) {
+                    if(!validateFile($_FILES['archivo_dni'],"DNI")) {
+                        $valid_form = false;
                     }
                 }
-                
-                // PARA EL ALUMNO DE OTRO CENTRO:
+
+                // CERTIFICADO:
+                // El error == 0 nos indica que no han habido errores de subida.
+                    if(isset($_FILES['certificado_academico']) && $_FILES['certificado_academico']['error'] == 0) {
+                    if(!validateFile($_FILES['certificado_academico'],"CERTIFICADO ACADÉMICO")) {
+                        $valid_form = false;
+                    }
+                }
+
                 /*
-                if((isset($_POST['certificado_academico']))) {
-                    echo $_POST['certificado_academico'];
-                    validateFile($_POST['certificado_academico']);
-                }
-                */
-
-                // En caso de que cualquiera de las anteriores haya fallado.
+                 * Para prevenir el envío de información incorrecta deberíamos emplear jquery para validar de cara al usuario,
+                 * pero si queremos que no se nevíe solo deberíamos descarmar la siguiente línea:
+                 */
                 if(!$valid_form) {
-//                    header("Location: index.php");
+                //header("Location: index.php");
                 }
             }
         ?>
@@ -787,12 +814,15 @@
                             <label for="pais" class="form-label">
                                 País: (*)
                             </label>
-                            <select name="pais" class="form-select" aria-label="Seleccionar país">
-                                <option value="">Seleccione una opción.</option>
-                                <option value="1" <?php if (isset($_POST['pais']) && $_POST['pais'] == '1'): ?>selected<?php endif; ?> >One</option>
-                                <option value="2" <?php if (isset($_POST['pais']) && $_POST['pais'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['pais']) && $_POST['pais'] == '3'): ?>selected<?php endif; ?> >Three</option>
-                            </select>
+                            <?php 
+                                $data = file_get_contents("json/paises.json");
+                                $countries = json_decode($data, true);
+                                $name = "pais";
+                                $id = "code";
+                                $field = "name_es";
+
+                                echo generarSelect($countries['countries'], $name, $id, $field);
+                            ?>
                         </div>
                     </div>
                     <div class="col-3">
@@ -800,11 +830,15 @@
                             <label for="provincia" class="form-label">
                                 Provincia: (*)
                             </label>
-                            <select name="provincia" class="form-select" aria-label="Seleccionar provincia">
-                                <option value="">Seleccione una opción.</option>
-                                <option value="1" <?php if (isset($_POST['provincia']) && $_POST['provincia'] == '1'): ?>selected<?php endif; ?> >One</option>
-                                <option value="2" <?php if (isset($_POST['provincia']) && $_POST['provincia'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['provincia']) && $_POST['provincia'] == '3'): ?>selected<?php endif; ?> >Three</option>
+                            <?php 
+                                $data = file_get_contents("json/provincias.json");
+                                $countries = json_decode($data, true);
+                                $name = "provincia";
+                                $id = "provincia_id";
+                                $field = "nombre";
+
+                                echo generarSelect($countries, $name, $id, $field);
+                            ?>
                             </select>
                         </div>
                     </div>
@@ -812,14 +846,19 @@
 
                 <div class="row mt-3">
                     <div class="col-3">
-                        <div class="form-group">
+                        <div class="form-group isla-hidden">
                             <label for="isla" class="form-label">
                                 Isla: (*)
                             </label>
                             <select name="isla" class="form-select" aria-label="Seleccionar isla">
                                 <option value="">Seleccione una opción.</option>
-                                <option value="1" <?php if (isset($_POST['isla']) && $_POST['isla'] == '1'): ?>selected<?php endif; ?> >One</option>
+                                <option value="Gran Canaria" <?php if (isset($_POST['isla']) && $_POST['isla'] == '1'): ?>selected<?php endif; ?> >Gran Canaria</option>
+                                <option value="Tenerife" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Two</option>
+                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
                                 <option value="2" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Two</option>
+                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
+                                <option value="2" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Two</option>
+                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
                                 <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
                             </select>
                         </div>
@@ -829,12 +868,15 @@
                             <label for="municipio" class="form-label">
                                 Municipio: (*)
                             </label>
-                            <select name="municipio" class="form-select" aria-label="Seleccionar municipio">
-                                <option value="">Seleccione una opción.</option>
-                                <option value="1" <?php if (isset($_POST['municipio']) && $_POST['municipio'] == '1'): ?>selected<?php endif; ?> >One</option>
-                                <option value="2" <?php if (isset($_POST['municipio']) && $_POST['municipio'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['municipio']) && $_POST['municipio'] == '3'): ?>selected<?php endif; ?> >Three</option>
-                            </select>
+                            <?php 
+                                $data = file_get_contents("json/municipios.json");
+                                $countries = json_decode($data, true);
+                                $name = "municipio";
+                                $id = "municipio_id";
+                                $field = "nombre";
+
+                                echo generarSelect($countries, $name, $id, $field);
+                            ?>
                         </div>
                     </div>
                     <div class="col-3">
