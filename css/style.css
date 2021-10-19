@@ -1,0 +1,71 @@
+body {
+    background: black;
+}
+
+.container {
+    padding: 50px 20px;
+    background: white;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.title {
+    padding: 2px 10px;
+    background: #087E8B;
+    border-bottom: 2px solid #0CA4A5;
+    color: #F5F5F5;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.subtitule {
+    padding: 2px 10px;
+    background: #EE964B;
+    border-bottom: 2px solid #F95738;
+    color: #F5F5F5;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.content {
+    padding: 0 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.mr-9 {
+    margin-right: 9px;
+}
+
+.ml-9 {
+    margin-left: 9px;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.representante {
+    display: inline-block;
+}
+
+/*
+.hidden-input {
+    visibility: hidden;
+}
+*/
