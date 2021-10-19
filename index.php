@@ -12,147 +12,146 @@
 <body>
     
     <?php
-    // Retorna false(0) si hay errror o el DNI validado y con letra si no hay error.
-    function validate_NIF($dni) {
-        $str = trim($dni);  
-        $str = str_replace("-","",$str);  
-        $str = str_ireplace(" ","",$str);  
-        $n = substr($str,0,strlen($str)-1);  
-        $n = intval($n);
+        // Retorna false(0) si hay errror o el DNI validado y con letra si no hay error.
+        function validate_NIF($dni) {
+            $str = trim($dni);  
+            $str = str_replace("-","",$str);  
+            $str = str_ireplace(" ","",$str);  
+            $n = substr($str,0,strlen($str)-1);  
+            $n = intval($n);
 
-        $l = substr($str,-1);
+            $l = substr($str,-1);
 
-        // Si no tiene 9 dígitos, $n no es un número l $l no es una string.
-        if (strlen($str) !== 9 || !is_int($n) || !is_string($l)) {
-            return false;
-        }
-
-        $letra = substr ("TRWAGMYFPDXBNJZSQVHLCKE", $n%23, 1);
-
-        if (strtolower($l) == strtolower($letra)) {  
-            return $n.$l;  
-        } else {  
-            return 0; 
-        }
-    }
-
-    function validate_NIE($nie) {
-        $str = trim($nie);
-        $str = str_replace("-","",$str);  
-        $str = str_ireplace(" ","",$str);
-        $n = substr($str,1,strlen($str)-2);
-        $n = intval($n);
-
-        $li = strtolower(substr($nie,0,1));
-        $lf = strtolower(substr($nie,8,9));
-
-        // Si no tiene 9 dígitos o $n no es un número.
-        if(strlen($str) !== 9 || !is_int($n)) {
-            return false;
-        }
-
-        // Si la primera letra no es X o T, y la última cifra es un número.
-        if(($li != "x" && $li != "t") || is_numeric($lf)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    function validate_NIF_NIE($documento, $dni) {
-        if($documento == "NIF") {
-            return validate_NIF($dni);
-        } else if ($documento == "NIE") {
-            return validate_NIE($dni);
-        } 
-        return false;
-    }
-
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-      }
-
-    function validarTelefonoFijo($number) {
-        if(is_numeric($number) && strlen($number) == 9 && (substr($number,0,1) == "9" || substr($number,0,1) == "8")) {
-            return true;
-        }
-        return false;
-    }
-
-    function validarTelefonoMovil($number) {
-        if(is_numeric($number) && strlen($number) == 9 && (substr($number,0,1) == "7" || substr($number,0,1) == "6")) {
-            return true;
-        }
-        return false;
-    }
-
-    function validarEMail($email) {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return true;
-        }
-        return false;
-    }
-
-    function validarString($string) {
-        $string = test_input($string);
-        if(is_string($string) && strlen($string) > 3) {
-            return true;
-        }
-        return false;
-    }
-
-    /*
-     * Validamos los ficheros de la siguiente forma:
-     *      1. Nos seguramos de que el archivo esté declarado isset($file);
-     *      2. Si la extensión no está incluida en $valid_formats es erróneo.
-     *      3. Si el archivo es mayor a 10485760B o 10MB hay un error.
-     *      4. Si hay carácteres especiales: ! " # $ & ' * + , . / ; < - > ? @ [ ] ( ) ^ ' { | }. dará error.
-     *      5. Para asegurarnos de que se vean todos los mensajes, el $error
-     *         nos permitirá retornar falso una vez termine de recorrer todas las posibilidades.
-     */
-    function validateFile($file,$nombre) {
-        $valid_formats = Array ('jpg', 'png', 'doc', 'docx', 'txt', 'pdf', 'odt');
-        $error = false;
-
-        if(isset($file)) {
-            $name       = $file['name'];  
-            $size       = $file['size'];
-
-            $extension = pathinfo($name, PATHINFO_EXTENSION);
-            if (!in_array($extension, $valid_formats)) {
-                echo "El archivo ".$nombre." tiene una extensión errónea: ".$extension.".<br />";
-                $error = true;
-            }
-            if($size > 10485760) {
-                echo "El archivo ".$nombre." tiene un tamaño superior a 10MB.<br />";
-                $error = true;
-            }
-            if (preg_match('/[\'^£$%&*()}{#~?><>,|+¬-]/', $name)) {
-                echo "El archivo ".$nombre." no puede tener carácteres especiales: ! \" # $ & ' * + , . / ; < - > ? @ [ ] ( ) ^ '\ { | } .<br />";
-                $error = true;
-            }
-            if($error) {
+            // Si no tiene 9 dígitos, $n no es un número l $l no es una string.
+            if (strlen($str) !== 9 || !is_int($n) || !is_string($l)) {
                 return false;
             }
+
+            $letra = substr ("TRWAGMYFPDXBNJZSQVHLCKE", $n%23, 1);
+
+            if (strtolower($l) == strtolower($letra)) {  
+                return $n.$l;  
+            } else {  
+                return 0; 
+            }
+        }
+
+        function validate_NIE($nie) {
+            $str = trim($nie);
+            $str = str_replace("-","",$str);  
+            $str = str_ireplace(" ","",$str);
+            $n = substr($str,1,strlen($str)-2);
+            $n = intval($n);
+
+            $li = strtolower(substr($nie,0,1));
+            $lf = strtolower(substr($nie,8,9));
+
+            // Si no tiene 9 dígitos o $n no es un número.
+            if(strlen($str) !== 9 || !is_int($n)) {
+                return false;
+            }
+
+            // Si la primera letra no es X o T, y la última cifra es un número.
+            if(($li != "x" && $li != "t") || is_numeric($lf)) {
+                return false;
+            }
+
             return true;
         }
-        return false;
-    }
 
-    function generarSelect($datos, $name, $id, $field){
-        $text = '<select name="'.$name.' id="'.$name.'" class="form-select" aria-label="Seleccionar '.$name.'">';
-        $text .= '<option value="">Seleccione una opción.</option>';
-        foreach ($datos as $dato) {
-            $text .= '<option value="'.$dato[$id].'">'.$dato[$field].'</option>';
+        function validate_NIF_NIE($documento, $dni) {
+            if($documento == "NIF") {
+                return validate_NIF($dni);
+            } else if ($documento == "NIE") {
+                return validate_NIE($dni);
+            } 
+            return false;
         }
-        $text .= '</select>';
-        return $text;
-    }
 
-?>
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+
+        function validarTelefonoFijo($number) {
+            if(is_numeric($number) && strlen($number) == 9 && (substr($number,0,1) == "9" || substr($number,0,1) == "8")) {
+                return true;
+            }
+            return false;
+        }
+
+        function validarTelefonoMovil($number) {
+            if(is_numeric($number) && strlen($number) == 9 && (substr($number,0,1) == "7" || substr($number,0,1) == "6")) {
+                return true;
+            }
+            return false;
+        }
+
+        function validarEMail($email) {
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return true;
+            }
+            return false;
+        }
+
+        function validarString($string) {
+            $string = test_input($string);
+            if(is_string($string) && strlen($string) > 3) {
+                return true;
+            }
+            return false;
+        }
+
+        /*
+        * Validamos los ficheros de la siguiente forma:
+        *      1. Nos seguramos de que el archivo esté declarado isset($file);
+        *      2. Si la extensión no está incluida en $valid_formats es erróneo.
+        *      3. Si el archivo es mayor a 10485760B o 10MB hay un error.
+        *      4. Si hay carácteres especiales: ! " # $ & ' * + , . / ; < - > ? @ [ ] ( ) ^ ' { | }. dará error.
+        *      5. Para asegurarnos de que se vean todos los mensajes, el $error
+        *         nos permitirá retornar falso una vez termine de recorrer todas las posibilidades.
+        */
+        function validateFile($file,$nombre) {
+            $valid_formats = Array ('jpg', 'png', 'doc', 'docx', 'txt', 'pdf', 'odt');
+            $error = false;
+
+            if(isset($file)) {
+                $name       = $file['name'];  
+                $size       = $file['size'];
+
+                $extension = pathinfo($name, PATHINFO_EXTENSION);
+                if (!in_array($extension, $valid_formats)) {
+                    echo "El archivo ".$nombre." tiene una extensión errónea: ".$extension.".<br />";
+                    $error = true;
+                }
+                if($size > 10485760) {
+                    echo "El archivo ".$nombre." tiene un tamaño superior a 10MB.<br />";
+                    $error = true;
+                }
+                if (preg_match('/[\'^£$%&*()}{#~?><>,|+¬-]/', $name)) {
+                    echo "El archivo ".$nombre." no puede tener carácteres especiales: ! \" # $ & ' * + , . / ; < - > ? @ [ ] ( ) ^ '\ { | } .<br />";
+                    $error = true;
+                }
+                if($error) {
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        function generarSelect($datos, $name, $id, $field){
+            $text = '<select name="'.$name.' id="'.$name.'" class="form-select" aria-label="Seleccionar '.$name.'">';
+            $text .= '<option value="">Seleccione una opción.</option>';
+            foreach ($datos as $dato) {
+                $text .= '<option value="'.$dato[$id].'">'.$dato[$field].'</option>';
+            }
+            $text .= '</select>';
+            return $text;
+        }
+    ?>
     <div class="container">
         <?php
         /*
@@ -163,6 +162,10 @@
         */
 
             $valid_form = true;
+
+            if(isset($_POST['cancel'])) {
+                header("Location: index.php");
+            }
 
             if(isset($_POST['submit'])) {
                 /*
