@@ -7,7 +7,7 @@ body {
     transition: 0.3s;
 }
 
-input.error{
+input.error, select.error{
     border: 1px solid red;
     color: red;
     background-color: #FFCCCB;

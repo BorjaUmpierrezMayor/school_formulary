@@ -42,6 +42,7 @@ $(document).ready(function() {
           required: true,
           custom_regexnombreapellidocalle: true
         },
+        en_calidad_de: "required",
         telefono_movil: {
           required: true,
           digits: true,
@@ -52,6 +53,7 @@ $(document).ready(function() {
           required: true,
           email: true
         },
+        tipo_de_via: "required",
         nombre_de_via:{
           required: true,
           custom_regexnombreapellidocalle: true
@@ -67,6 +69,18 @@ $(document).ready(function() {
         fecha:{
           required: true,
         },
+        pais: "required",
+        provincia: "required",
+        isla: "required",
+        municipio: "required",
+        codigo_postal: "required",
+        ciencias: "required",
+        bloque_ii: "required",
+        bloque_iii: "required",
+        bloque_iv: "required",
+        bloque_v: "required",
+        archivo_dni: "required",
+        certificado_academico: "required"
 
       },
       
@@ -89,6 +103,7 @@ $(document).ready(function() {
           required:"Introduce el segundo apellido del alumno",
           custom_regexnombreapellidocalle: "El apellido introducido solo puede tener letras y espacios"
         },
+        en_calidad_de: "Es necesario elegir quién es el representante",
         telefono_movil: {
           required: "El teléfono móvil es obligatorio",
           //TODO modificar teléfono para hacer regex
@@ -100,6 +115,7 @@ $(document).ready(function() {
           required: "El correo electrónico es obligatorio",
           email: "El correo electrónico introducido es inválido"
         },
+        tipo_de_via: "Es necesario elegir el tipo de vía",
         nombre_de_via:{
           required: "La dirección del domicilio es obligatoria",
           custom_regexnombreapellidocalle: "La dirección escrita no es válida"
@@ -114,7 +130,19 @@ $(document).ready(function() {
         },
         fecha:{
           required: "La fecha de nacimiento es obligatoria",
-        }
+        },
+        pais: "Elija el país",
+        provincia: "Elija la provincia",
+        isla: "Elija la isla",
+        municipio: "Elija el municipio",
+        codigo_postal: "Introduzca el código postal",
+        ciencias: "Elija el itinerario a estudiar",
+        bloque_ii: "Elija la segunda lengua a estudiar",
+        bloque_iii: "Elija asignatura troncal",
+        bloque_iv: "Elija asignatura optativa",
+        bloque_v: "Elija asignatura opcional",
+        archivo_dni: "El DNI del alumno es obligatorio",
+        certificado_academico: "El certificado académico del alumno es obligatorio",
       },
       // Make sure the form is submitted to the destination defined
       // in the "action" attribute of the form when valid
