@@ -45,9 +45,10 @@ $(document).ready(function() {
         en_calidad_de: "required",
         telefono_movil: {
           required: true,
-          digits: true,
-          min: 600000000,
-          max: 799999999
+          custom_regexmovil: true
+        },
+        telefono_fijo: {
+          custom_regexfijo: true
         },
         email: {
           required: true,
@@ -107,10 +108,9 @@ $(document).ready(function() {
         telefono_movil: {
           required: "El teléfono móvil es obligatorio",
           //TODO modificar teléfono para hacer regex
-          min: "El número de teléfono introducido es inferior al rango esperado",
-          max: "El número de teléfono móvil introducido está por encima del rango esperado",
-          digits: "El valor introducido no es un número."
+          custom_regexmovil: "El teléfono móvil introducido no es válido",
         },
+        telefono_fijo: "El teléfono fijo introducido no es válido",
         email:{
           required: "El correo electrónico es obligatorio",
           email: "El correo electrónico introducido es inválido"
@@ -128,9 +128,7 @@ $(document).ready(function() {
           required: "Es necesario escribir el complemento",
           custom_regexnombreapellidocalle: "Solo se pueden escribir espacios y letras"
         },
-        fecha:{
-          required: "La fecha de nacimiento es obligatoria",
-        },
+        fecha: "La fecha de nacimiento es obligatoria",
         pais: "Elija el país",
         provincia: "Elija la provincia",
         isla: "Elija la isla",
