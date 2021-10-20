@@ -515,7 +515,7 @@
 
             <div class="content">
                 <div class="row mt-3">
-                    <div class="col-2">
+                    <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="tipo_documento" class="form-label">
                                 Tipo de documento: (*)
@@ -527,7 +527,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="numero_identificacion" class="form-label" name="numero_identificacion">
                                 Nº de identifiación: (*)
@@ -541,7 +541,7 @@
                             >
                         </div>
                     </div>
-                    <div class="col-5">
+                    <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="nombre" class="form-label">
                                 Nombre: (*)
@@ -589,7 +589,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-3">
+                    <div class="col-12 col-lg-4">
                         <div class="form-group">
                             <label for="en_calidad_de" class="form-label">
                                 En calidad de: (*)
@@ -602,7 +602,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-6 col-lg-4">
                         <div class="form-group">
                             <label for="telefono_fijo" class="form-label">
                                 Teléfono fijo:
@@ -616,7 +616,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-6 col-lg-4">
                         <div class="form-group">
                             <label for="telefono_movil" class="form-label">
                                 Teléfono móvil: (*)
@@ -630,7 +630,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-5">
+                    <div class="col-12">
                         <div class="form-group">
                             <label for="email" class="form-label">
                                 Correo electrónico: (*)

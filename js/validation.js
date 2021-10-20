@@ -107,7 +107,6 @@ $(document).ready(function() {
         en_calidad_de: "Es necesario elegir quién es el representante",
         telefono_movil: {
           required: "El teléfono móvil es obligatorio",
-          //TODO modificar teléfono para hacer regex
           custom_regexmovil: "El teléfono móvil introducido no es válido",
         },
         telefono_fijo: "El teléfono fijo introducido no es válido",
