@@ -18,28 +18,29 @@ $(document).ready(function() {
     return value.match(regexNumeroFijo);
   });
 
-  $.validator.addMethod("custom_regexnombreapellido", function(value, element){
+  $.validator.addMethod("custom_regexnombreapellidocalle", function(value, element){
     return value.match(regexNombreYApellido);
   });
     // It has the name attribute "registration"
     $("form[name='registration']").validate({
       // Specify validation rules
       rules: {
+        tipo_documento: "required",
         numero_identificacion: {
             required: true,
             custom_regexidentificacion: true
         },
         nombre:{
           required: true,
-          custom_regexnombreapellido: true
+          custom_regexnombreapellidocalle: true
         },
         primer_apellido:{
           required: true,
-          custom_regexnombreapellido: true
+          custom_regexnombreapellidocalle: true
         },
         segundo_apellido:{
           required: true,
-          custom_regexnombreapellido: true
+          custom_regexnombreapellidocalle: true
         },
         telefono_movil: {
           required: true,
@@ -51,37 +52,69 @@ $(document).ready(function() {
           required: true,
           email: true
         },
+        nombre_de_via:{
+          required: true,
+          custom_regexnombreapellidocalle: true
+        },
+        numero_de_via:{
+          required: true,
+          number: true
+        },
+        complemento:{
+          required: true,
+          custom_regexnombreapellidocalle: true
+        },
+        fecha:{
+          required: true,
+        },
+
       },
       
       // Specify validation error messages
       messages: {
+        tipo_documento: "Elija el tipo de documento",
         numero_identificacion: {
-          required: "Obligatorio",
-          custom_regexidentificacion: "DNI/NIE incorrecto"
+          required: "El DNI del alumno es obligatorio",
+          custom_regexidentificacion: "El DNI/NIE introducido es incorrecto"
         },
         nombre: {
-          required:"Introduce tu nombre",
-          custom_regexnombreapellido: "El nombre introducido solo puede tener letras y espacios"
+          required:"Introduce el nombre del alumno",
+          custom_regexnombreapellidocalle: "El nombre introducido solo puede tener letras y espacios"
         },
         primer_apellido: {
-          required:"Introduce tu primer apellido",
-          custom_regexnombreapellido: "El apellido introducido solo puede tener letras y espacios"
+          required:"Introduce el primer apellido del alumno",
+          custom_regexnombreapellidocalle: "El apellido introducido solo puede tener letras y espacios"
         },
         segundo_apellido: {
-          required:"Introduce tu segundo apellido",
-          custom_regexnombreapellido: "El apellido introducido solo puede tener letras y espacios"
-        },
-        password: {
-          required: "Introduzca una contraseña",
-          minlength: "La contraseña debe tener, al menos, 8 caracteres"
+          required:"Introduce el segundo apellido del alumno",
+          custom_regexnombreapellidocalle: "El apellido introducido solo puede tener letras y espacios"
         },
         telefono_movil: {
           required: "El teléfono móvil es obligatorio",
+          //TODO modificar teléfono para hacer regex
           min: "El número de teléfono introducido es inferior al rango esperado",
           max: "El número de teléfono móvil introducido está por encima del rango esperado",
-          digits: "El valor introducido no es un número válido."
+          digits: "El valor introducido no es un número."
         },
-        email: "El correo debe tener el formato: nombre@dominio.algo",
+        email:{
+          required: "El correo electrónico es obligatorio",
+          email: "El correo electrónico introducido es inválido"
+        },
+        nombre_de_via:{
+          required: "La dirección del domicilio es obligatoria",
+          custom_regexnombreapellidocalle: "La dirección escrita no es válida"
+        },
+        numero_de_via:{
+          required: "El número de la dirección es obligatoria",
+          number: "Este campo solo acepta números"
+        },
+        complemento:{
+          required: "Es necesario escribir el complemento",
+          custom_regexnombreapellidocalle: "Solo se pueden escribir espacios y letras"
+        },
+        fecha:{
+          required: "La fecha de nacimiento es obligatoria",
+        }
       },
       // Make sure the form is submitted to the destination defined
       // in the "action" attribute of the form when valid

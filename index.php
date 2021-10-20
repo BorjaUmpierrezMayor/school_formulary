@@ -532,7 +532,7 @@
                             <label for="numero_identificacion" class="form-label" name="numero_identificacion">
                                 Nº de identifiación: (*)
                             </label>
-                            <input type="text" class="form-control" name="numero_identificacion" id="numero_identificacion" placeholder="Ej: 12345678Z / Z1234567X"
+                            <input type="text" maxlength="9" class="form-control" name="numero_identificacion" id="numero_identificacion" placeholder="Ej: 12345678Z / Z1234567X"
                                 <?php
                                     if (isset($_POST['numero_identificacion'])) {
                                         echo ' value="'.$_POST['numero_identificacion'].'"';
@@ -595,10 +595,10 @@
                                 En calidad de: (*)
                             </label>
                             <select name="en_calidad_de" class="form-select" aria-label="Default select example">
-                                <option value="">Open this select menu</option>
-                                <option value="1" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == '1'): ?>selected<?php endif; ?> >One</option>
-                                <option value="2" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == '3'): ?>selected<?php endif; ?> >Three</option>
+                                <option value="">Representante</option>
+                                <option value="madre" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == 'madre'): ?>selected<?php endif; ?> >Madre</option>
+                                <option value="padre" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == 'padre'): ?>selected<?php endif; ?> >Padre</option>
+                                <option value="tutor_legal" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == 'tutor_legal'): ?>selected<?php endif; ?> >Tutor legal</option>
                             </select>
                         </div>
                     </div>
@@ -658,10 +658,10 @@
                                 Tipo de vía: (*)
                             </label>
                             <select name="tipo_de_via" class="form-select" aria-label="Default select example">
-                                <option value="">Open this select menu</option>
-                                <option value="1" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == '1'): ?>selected<?php endif; ?> >One</option>
-                                <option value="2" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == '3'): ?>selected<?php endif; ?> >Three</option>
+                                <option value="">Vía del domicilio</option>
+                                <option value="calle" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == 'calle'): ?>selected<?php endif; ?> >Calle</option>
+                                <option value="avenida" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == 'avenida'): ?>selected<?php endif; ?> >Avenida</option>
+                                <option value="via" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == 'via'): ?>selected<?php endif; ?> >Vía</option>
                             </select>
                         </div>
                     </div>

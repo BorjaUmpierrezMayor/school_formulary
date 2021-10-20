@@ -2,7 +2,7 @@ body {
     background: black;
 }
 
-input[type="text"]:focus{
+.form-control:focus{
     background-color: #eee;
     transition: 0.3s;
 }
