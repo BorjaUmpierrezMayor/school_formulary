@@ -696,7 +696,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="bloque" class="form-label">
                                 Bloque:
@@ -710,7 +710,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="escalera" class="form-label">
                                 Escalera:
@@ -724,7 +724,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="piso" class="form-label">
                                 Piso:
@@ -738,7 +738,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="portal" class="form-label">
                                 Portal:
@@ -752,7 +752,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="letra" class="form-label">
                                 Letra:
@@ -766,7 +766,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="puerta" class="form-label">
                                 Puerta:
@@ -783,7 +783,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-4">
+                    <div class="col-12 col-lg-6">
                         <div class="form-group">
                             <label for="complemento" class="form-label">
                                 Complemento: (*)
@@ -797,7 +797,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-12 col-lg-6">
                         <div class="form-group">
                             <label for="fecha" class="form-label">
                                 Fecha de nacimiento: (*)
@@ -811,7 +811,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-lg-4">
                         <div class="form-group">
                             <label for="pais" class="form-label">
                                 País: (*)
@@ -827,7 +827,7 @@
                             ?>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-6 col-lg-4">
                         <div class="form-group">
                             <label for="provincia" class="form-label">
                                 Provincia: (*)
@@ -844,10 +844,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col-3">
+                    <div class="col-6 col-lg-4">
                         <div class="form-group isla-hidden">
                             <label for="isla" class="form-label">
                                 Isla: (*)
@@ -864,7 +861,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-3">
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="municipio" class="form-label">
                                 Municipio: (*)
@@ -880,7 +880,7 @@
                             ?>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <!--<div class="col-3">
                         <div class="form-group">
                             <label for="localidad" class="form-label">
                                 Localidad: (*)
@@ -892,8 +892,8 @@
                                 <option value="3" <?php if (isset($_POST['localidad']) && $_POST['localidad'] == '3'): ?>selected<?php endif; ?> >Three</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="col-3">
+                    </div>-->
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="codigo_postal" class="form-label">
                                 Código postal: (*)
@@ -1190,14 +1190,14 @@
                 </div>
 
                 <div class="row mt-3">
-                    <p class="col-6">Página web del centro docente:</p>
-                    <div class="col-3 form-check">
+                    <p class="col-12">Página web del centro docente:</p>
+                    <div class="col-2 form-check">
                         <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_es_consiente" value="Consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="pagina_es_consiente">
                             Consiente
                         </label>
                     </div>
-                    <div class="col-3 form-check">
+                    <div class="col-4 form-check">
                         <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_no_consiente" value="No consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="pagina_no_consiente">
                             No consiente
@@ -1205,15 +1205,15 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <p class="col-6">App de alumnos y familias:</p>
-                    <div class="col-3 form-check">
+                <div class="row mt-3">
+                    <p class="col-12">App de alumnos y familias:</p>
+                    <div class="col-2 form-check">
                         <input class="form-check-input" type="radio" name="app_consiente" id="app_es_consiente" value="Consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="app_es_consiente">
                             Consiente
                         </label>
                     </div>
-                    <div class="col-3 form-check">
+                    <div class="col-4 form-check">
                         <input class="form-check-input" type="radio" name="app_consiente" id="app_no_consiente" value="No consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="app_no_consiente">
                             No consiente
@@ -1221,15 +1221,15 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <p class="col-6">Facebook:</p>
-                    <div class="col-3 form-check">
+                <div class="row mt-3">
+                    <p class="col-12">Facebook:</p>
+                    <div class="col-2 form-check">
                         <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_es_consiente" value="Consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="facebook_es_consiente">
                             Consiente
                         </label>
                     </div>
-                    <div class="col-3 form-check">
+                    <div class="col-4 form-check">
                         <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_no_consiente" value="No consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="facebook_no_consiente">
                             No consiente
