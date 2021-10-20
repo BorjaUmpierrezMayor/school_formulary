@@ -530,7 +530,7 @@
                     </div>
                     <div class="col-4">
                         <div class="form-group">
-                            <label for="numero_identificacion" class="form-label">
+                            <label for="numero_identificacion" class="form-label" name="numero_identificacion">
                                 Nº de identifiación: (*)
                             </label>
                             <input type="text" class="form-control" name="numero_identificacion" id="numero_identificacion" placeholder="Ej: 12345678Z / Z1234567X"
@@ -855,14 +855,13 @@
                             </label>
                             <select name="isla" class="form-select" aria-label="Seleccionar isla">
                                 <option value="">Seleccione una opción.</option>
-                                <option value="Gran Canaria" <?php if (isset($_POST['isla']) && $_POST['isla'] == '1'): ?>selected<?php endif; ?> >Gran Canaria</option>
-                                <option value="Tenerife" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
-                                <option value="2" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
-                                <option value="2" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
-                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
+                                <option value="gran-canaria" <?php if (isset($_POST['isla']) && $_POST['isla'] == '1'): ?>selected<?php endif; ?> >Gran Canaria</option>
+                                <option value="tenerife" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Tenerife</option>
+                                <option value="la-palma" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >La Palma</option>
+                                <option value="el-hierro" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >El Hierro</option>
+                                <option value="la-gomera" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >La Gomera</option>
+                                <option value="fuerteventura" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Fuerteventura</option>
+                                <option value="lanzarote" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Lanzarote</option>
                             </select>
                         </div>
                     </div>

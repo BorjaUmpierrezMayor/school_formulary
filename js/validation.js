@@ -1,5 +1,5 @@
 // Wait for the DOM to be ready
-$(function() {
+$(document).ready(function() {
     // Initialize form validation on the registration form.
     // It has the name attribute "registration"
     $("form[name='registration']").validate({
@@ -14,6 +14,8 @@ $(function() {
             length: 9
         },
         nombre: "required",
+        primer_apellido: "required",
+        segundo_apellido: "required",
         email: {
           required: true,
           // Specify that email should be validated
@@ -24,12 +26,13 @@ $(function() {
       // Specify validation error messages
       messages: {
         nombre: "Introduce tu nombre",
-        lastname: "Introduce tu apellido",
+        primer_apellido: "Introduce tu apellido",
+        segundo_apellido: "Introduce tu apellido",
         password: {
           required: "Introduzca una contraseña",
           minlength: "La contraseña debe tener, al menos, 8 caracteres"
         },
-        email: "Introduzca un correo válido."
+        email: "El correo debe tener el formato: nombre@dominio.algo"
       },
       // Make sure the form is submitted to the destination defined
       // in the "action" attribute of the form when valid
