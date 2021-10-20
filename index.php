@@ -943,6 +943,10 @@
 
             <div class="content">
                 <p>Seleccione opción (seleccionar 1):</p>
+
+                <label for="ciencias" class="error" style="display:none;">* Please pick an option above</label>
+
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="ciencias" value="Ciencias de la salud" id="ciencias_de_la_salud" <?php if (isset($_POST['ciencias']) && $_POST['ciencias'] == 'Ciencias de la salud'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="ciencias_de_la_salud">
@@ -1072,6 +1076,9 @@
 
 
                 <p class="mt-3">Bloque 2 (seleccionar 1):</p>
+
+                <label for="bloque_ii" class="error" style="display:none;">* Please pick an option above</label>
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="bloque_ii" id="ingles_i" value="Primera lengua extranjera (inglés) I" <?php if (isset($_POST['bloque_ii']) && $_POST['bloque_ii'] == 'Primera lengua extranjera (inglés) I'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="ingles_i">
@@ -1086,6 +1093,9 @@
                 </div>
 
                 <p class="mt-3">Bloque 3 (seleccionar 1):</p>
+
+                <label for="bloque_iii" class="error" style="display:none;">* Please pick an option above</label>
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="bloque_iii" id="biologia_y_geologia" value="Biología y Geología" <?php if (isset($_POST['bloque_iii']) && $_POST['bloque_iii'] == 'Biología y Geología'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="biologia_y_geologia">
@@ -1099,7 +1109,11 @@
                     </label>
                 </div>
 
+
                 <p class="mt-3">Bloque 4 (seleccionar 1):</p>
+
+                <label for="bloque_iv" class="error" style="display:none;">* Please pick an option above</label>
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="bloque_iv" id="tecnologia_industrial_i" value="Tecnología Industrial I"  <?php if (isset($_POST['bloque_iv']) && $_POST['bloque_iv'] == 'Tecnología Industrial I'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="tecnologia_industrial_i">
@@ -1131,7 +1145,12 @@
                     </label>
                 </div>
 
+                
+
                 <p class="mt-3">Bloque 5 (seleccionar 1):</p>
+
+                <label for="bloque_v" class="error" style="display:none;">* Please pick an option above</label>
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="bloque_v" id="religion_catolica" value="Religión Católica" <?php if (isset($_POST['bloque_v']) && $_POST['bloque_v'] == 'Religión Católica'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="religion_catolica">
