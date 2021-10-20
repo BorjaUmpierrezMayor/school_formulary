@@ -433,26 +433,26 @@
                 //  *********** MEDIOS DE DIFUSIÓN
 
                 // Consentimiento firmado:
-                if((!isset($_POST['consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el consciente."."<br/>";
+                if((!isset($_POST['consiente']))) {
+                    echo "No ha seleccionado ninguna opción en el consiente."."<br/>";
                     $valid_form = false;
                 }
 
                 // Consentimiento Página web del centro docente:
-                if((!isset($_POST['pagina_consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el pagina_consciente."."<br/>";
+                if((!isset($_POST['pagina_consiente']))) {
+                    echo "No ha seleccionado ninguna opción en el pagina_consiente."."<br/>";
                     $valid_form = false;
                 }
 
                 // Consentimiento App de alumnos y familias:
-                if((!isset($_POST['app_consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el app_consciente."."<br/>";
+                if((!isset($_POST['app_consiente']))) {
+                    echo "No ha seleccionado ninguna opción en el app_consiente."."<br/>";
                     $valid_form = false;
                 }
 
                 // Consentimiento Facebook:
-                if((!isset($_POST['facebook_consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el facebook_consciente."."<br/>";
+                if((!isset($_POST['facebook_consiente']))) {
+                    echo "No ha seleccionado ninguna opción en el facebook_consiente."."<br/>";
                     $valid_form = false;
                 }
 
@@ -1177,30 +1177,30 @@
                 </p>
 
                 <div class="form-check representante mt-3">
-                    <input class="form-check-input" type="radio" name="consciente" id="es_consciente" value="Consciente" <?php if (isset($_POST['consciente']) && $_POST['consciente'] == 'Consciente'): ?>checked='checked'<?php endif; ?>>
-                    <label class="form-check-label" for="es_consciente">
-                        Consciente
+                    <input class="form-check-input" type="radio" name="consiente" id="es_consiente" value="Consiente" <?php if (isset($_POST['consiente']) && $_POST['consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
+                    <label class="form-check-label" for="es_consiente">
+                        Consiente
                     </label>
                 </div>
                 <div class="form-check representante">
-                    <input class="form-check-input" type="radio" name="consciente" id="no_consciente" value="No consciente" <?php if (isset($_POST['consciente']) && $_POST['consciente'] == 'No consciente'): ?>checked='checked'<?php endif; ?>>
-                    <label class="form-check-label" for="no_consciente">
-                        No consciente
+                    <input class="form-check-input" type="radio" name="consiente" id="no_consiente" value="No consiente" <?php if (isset($_POST['consiente']) && $_POST['consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
+                    <label class="form-check-label" for="no_consiente">
+                        No consiente
                     </label>
                 </div>
 
                 <div class="row mt-3">
                     <p class="col-6">Página web del centro docente:</p>
                     <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="pagina_consciente" id="pagina_es_consciente" value="Consciente" <?php if (isset($_POST['pagina_consciente']) && $_POST['pagina_consciente'] == 'Consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="pagina_es_consciente">
-                            Consciente
+                        <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_es_consiente" value="Consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="pagina_es_consiente">
+                            Consiente
                         </label>
                     </div>
                     <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="pagina_consciente" id="pagina_no_consciente" value="No consciente" <?php if (isset($_POST['pagina_consciente']) && $_POST['pagina_consciente'] == 'No consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="pagina_no_consciente">
-                            No consciente
+                        <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_no_consiente" value="No consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="pagina_no_consiente">
+                            No consiente
                         </label>
                     </div>
                 </div>
@@ -1208,15 +1208,15 @@
                 <div class="row">
                     <p class="col-6">App de alumnos y familias:</p>
                     <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="app_consciente" id="app_es_consciente" value="Consciente" <?php if (isset($_POST['app_consciente']) && $_POST['app_consciente'] == 'Consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="app_es_consciente">
-                            Consciente
+                        <input class="form-check-input" type="radio" name="app_consiente" id="app_es_consiente" value="Consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="app_es_consiente">
+                            Consiente
                         </label>
                     </div>
                     <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="app_consciente" id="app_no_consciente" value="No consciente" <?php if (isset($_POST['app_consciente']) && $_POST['app_consciente'] == 'No consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="app_no_consciente">
-                            No consciente
+                        <input class="form-check-input" type="radio" name="app_consiente" id="app_no_consiente" value="No consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="app_no_consiente">
+                            No consiente
                         </label>
                     </div>
                 </div>
@@ -1224,15 +1224,15 @@
                 <div class="row">
                     <p class="col-6">Facebook:</p>
                     <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="facebook_consciente" id="facebook_es_consciente" value="Consciente" <?php if (isset($_POST['facebook_consciente']) && $_POST['facebook_consciente'] == 'Consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="facebook_es_consciente">
-                            Consciente
+                        <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_es_consiente" value="Consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="facebook_es_consiente">
+                            Consiente
                         </label>
                     </div>
                     <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="facebook_consciente" id="facebook_no_consciente" value="No consciente" <?php if (isset($_POST['facebook_consciente']) && $_POST['facebook_consciente'] == 'No consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="facebook_no_consciente">
-                            No consciente
+                        <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_no_consiente" value="No consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="facebook_no_consiente">
+                            No consiente
                         </label>
                     </div>
                 </div>
