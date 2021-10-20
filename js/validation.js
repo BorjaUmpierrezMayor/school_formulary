@@ -8,7 +8,7 @@ $(document).ready(function() {
         // The key name on the left side is the name attribute
         // of an input field. Validation rules are defined
         // on the right side
-        numero_identificacion:{
+        numero_identificacion: {
             required: true,
             regex: "^[0-9]{8,8}[A-Za-z]$",
             minlength: 9
@@ -43,7 +43,7 @@ $(document).ready(function() {
           min: "El número de teléfono introducido es inferior al rango esperado",
           max: "El número de teléfono móvil introducido está por encima del rango esperado"
         }
-        email: "El correo debe tener el formato: nombre@dominio.algo"
+        email: "El correo debe tener el formato: nombre@dominio.algo",
       },
       // Make sure the form is submitted to the destination defined
       // in the "action" attribute of the form when valid

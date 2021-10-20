@@ -7,6 +7,8 @@ input[type="text"]:focus{
     transition: 0.3s;
 }
 
+
+
 .container {
     padding: 50px 20px;
     background: white;
