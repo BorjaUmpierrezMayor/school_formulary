@@ -485,7 +485,7 @@
             }
         ?>
 
-        <form action="index.php" method="post" enctype="multipart/form-data">
+        <form action="index.php" method="post" enctype="multipart/form-data" name="registration">
             <h1>Solicitud de servicios</h1>
 
             <p class="title mt-3">DATOS ACTÚA COMO REPRESENTANTE</p>
@@ -1276,5 +1276,9 @@
   
         </form>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>

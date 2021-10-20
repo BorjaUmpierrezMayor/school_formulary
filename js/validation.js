@@ -10,7 +10,8 @@ $(function() {
         // on the right side
         numero_identificacion:{
             required: true,
-            regex: "^[0-9]{8,8}[A-Za-z]$"
+            regex: "^[0-9]{8,8}[A-Za-z]$",
+            length: 9
         },
         nombre: "required",
         email: {
