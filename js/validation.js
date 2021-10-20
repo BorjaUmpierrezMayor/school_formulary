@@ -5,9 +5,6 @@ $(document).ready(function() {
     $("form[name='registration']").validate({
       // Specify validation rules
       rules: {
-        // The key name on the left side is the name attribute
-        // of an input field. Validation rules are defined
-        // on the right side
         numero_identificacion: {
             required: true,
             regex: "^[0-9]{8,8}[A-Za-z]$",
@@ -26,6 +23,7 @@ $(document).ready(function() {
           email: true
         },
       },
+      
       // Specify validation error messages
       messages: {
         numero_identificacion: "Obligatorio",

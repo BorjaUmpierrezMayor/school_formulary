@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
     <?php
         // Retorna false(0) si hay errror o el DNI validado y con letra si no hay error.
         function validate_NIF($dni) {
