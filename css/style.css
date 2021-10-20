@@ -2,6 +2,11 @@ body {
     background: black;
 }
 
+input[type="text"]:focus{
+    background-color: #eee;
+    transition: 0.3s;
+}
+
 .container {
     padding: 50px 20px;
     background: white;
