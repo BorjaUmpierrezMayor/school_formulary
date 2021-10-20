@@ -7,7 +7,15 @@ input[type="text"]:focus{
     transition: 0.3s;
 }
 
+input.error{
+    border: 1px solid red;
+    color: red;
+    background-color: #FFCCCB;
+}
 
+label.error{
+    color: red;
+}
 
 .container {
     padding: 50px 20px;
@@ -73,10 +81,4 @@ label {
 
 .hidden-input {
     visibility: hidden;
-}
-
-.isla-hidden {
-    /*
-    display: none;
-    */
 }
