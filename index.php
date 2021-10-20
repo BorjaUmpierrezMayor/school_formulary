@@ -608,7 +608,7 @@
                             <label for="telefono_fijo" class="form-label">
                                 Teléfono fijo:
                             </label>
-                            <input type="text" class="form-control" name="telefono_fijo" id="telefono_fijo" placeholder="920 000 000"
+                            <input type="text" maxlength="9" class="form-control" name="telefono_fijo" id="telefono_fijo" placeholder="920 000 000"
                                 <?php
                                     if (isset($_POST['telefono_fijo'])) {
                                         echo ' value="'.trim($_POST['telefono_fijo']).'"';
@@ -622,7 +622,7 @@
                             <label for="telefono_movil" class="form-label">
                                 Teléfono móvil: (*)
                             </label>
-                            <input type="text" class="form-control" name="telefono_movil" id="telefono_movil" placeholder="666 000 000"
+                            <input type="text"  maxlength="9" class="form-control" name="telefono_movil" id="telefono_movil" placeholder="612 345 678"
                                 <?php
                                     if (isset($_POST['telefono_movil'])) {
                                         echo ' value="'.trim($_POST['telefono_movil']).'"';

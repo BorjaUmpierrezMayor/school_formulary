@@ -16,6 +16,11 @@ $(document).ready(function() {
         nombre: "required",
         primer_apellido: "required",
         segundo_apellido: "required",
+        telefono_movil: {
+          required: true,
+          min: 600000000,
+          max: 799999999
+        },
         email: {
           required: true,
           // Specify that email should be validated
@@ -33,6 +38,11 @@ $(document).ready(function() {
           required: "Introduzca una contraseña",
           minlength: "La contraseña debe tener, al menos, 8 caracteres"
         },
+        telefono_movil: {
+          required: "El teléfono móvil es obligatorio",
+          min: "El número de teléfono introducido es inferior al rango esperado",
+          max: "El número de teléfono móvil introducido está por encima del rango esperado"
+        }
         email: "El correo debe tener el formato: nombre@dominio.algo"
       },
       // Make sure the form is submitted to the destination defined
