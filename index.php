@@ -1191,13 +1191,13 @@
 
                 <div class="row mt-3">
                     <p class="col-12">Página web del centro docente:</p>
-                    <div class="col-2 form-check">
+                    <div class="col-4 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_es_consiente" value="Consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="pagina_es_consiente">
                             Consiente
                         </label>
                     </div>
-                    <div class="col-4 form-check">
+                    <div class="col-6 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_no_consiente" value="No consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="pagina_no_consiente">
                             No consiente
@@ -1207,13 +1207,13 @@
 
                 <div class="row mt-3">
                     <p class="col-12">App de alumnos y familias:</p>
-                    <div class="col-2 form-check">
+                    <div class="col-4 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="app_consiente" id="app_es_consiente" value="Consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="app_es_consiente">
                             Consiente
                         </label>
                     </div>
-                    <div class="col-4 form-check">
+                    <div class="col-6 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="app_consiente" id="app_no_consiente" value="No consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="app_no_consiente">
                             No consiente
@@ -1223,13 +1223,13 @@
 
                 <div class="row mt-3">
                     <p class="col-12">Facebook:</p>
-                    <div class="col-2 form-check">
+                    <div class="col-4 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_es_consiente" value="Consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="facebook_es_consiente">
                             Consiente
                         </label>
                     </div>
-                    <div class="col-4 form-check">
+                    <div class="col-6 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_no_consiente" value="No consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="facebook_no_consiente">
                             No consiente
