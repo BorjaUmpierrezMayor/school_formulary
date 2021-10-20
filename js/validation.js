@@ -11,7 +11,7 @@ $(document).ready(function() {
         numero_identificacion:{
             required: true,
             regex: "^[0-9]{8,8}[A-Za-z]$",
-            length: 9
+            minlength: 9
         },
         nombre: "required",
         primer_apellido: "required",
@@ -25,6 +25,7 @@ $(document).ready(function() {
       },
       // Specify validation error messages
       messages: {
+        numero_identificacion: "Obligatorio",
         nombre: "Introduce tu nombre",
         primer_apellido: "Introduce tu apellido",
         segundo_apellido: "Introduce tu apellido",
