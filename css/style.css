@@ -2,6 +2,21 @@ body {
     background: black;
 }
 
+.form-control:focus{
+    background-color: #eee;
+    transition: 0.3s;
+}
+
+input.error, select.error{
+    border: 1px solid red;
+    color: red;
+    background-color: #FFCCCB;
+}
+
+label.error{
+    color: red;
+}
+
 .container {
     padding: 50px 20px;
     background: white;
@@ -19,7 +34,6 @@ h1 {
     color: #F5F5F5;
     font-size: 1.5rem;
     font-weight: 600;
-    text-decoration: underline;
 }
 
 .subtitule {
@@ -66,10 +80,4 @@ label {
 
 .hidden-input {
     visibility: hidden;
-}
-
-.isla-hidden {
-    /*
-    display: none;
-    */
 }

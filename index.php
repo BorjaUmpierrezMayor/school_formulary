@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
     <?php
         // Retorna false(0) si hay errror o el DNI validado y con letra si no hay error.
         function validate_NIF($dni) {
@@ -434,26 +433,26 @@
                 //  *********** MEDIOS DE DIFUSIÓN
 
                 // Consentimiento firmado:
-                if((!isset($_POST['consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el consciente."."<br/>";
+                if((!isset($_POST['consiente']))) {
+                    echo "No ha seleccionado ninguna opción en el consiente."."<br/>";
                     $valid_form = false;
                 }
 
                 // Consentimiento Página web del centro docente:
-                if((!isset($_POST['pagina_consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el pagina_consciente."."<br/>";
+                if((!isset($_POST['pagina_consiente']))) {
+                    echo "No ha seleccionado ninguna opción en el pagina_consiente."."<br/>";
                     $valid_form = false;
                 }
 
                 // Consentimiento App de alumnos y familias:
-                if((!isset($_POST['app_consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el app_consciente."."<br/>";
+                if((!isset($_POST['app_consiente']))) {
+                    echo "No ha seleccionado ninguna opción en el app_consiente."."<br/>";
                     $valid_form = false;
                 }
 
                 // Consentimiento Facebook:
-                if((!isset($_POST['facebook_consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el facebook_consciente."."<br/>";
+                if((!isset($_POST['facebook_consiente']))) {
+                    echo "No ha seleccionado ninguna opción en el facebook_consiente."."<br/>";
                     $valid_form = false;
                 }
 
@@ -485,7 +484,7 @@
             }
         ?>
 
-        <form action="index.php" method="post" enctype="multipart/form-data">
+        <form action="index.php" method="post" enctype="multipart/form-data" name="registration">
             <h1>Solicitud de servicios</h1>
 
             <p class="title mt-3">DATOS ACTÚA COMO REPRESENTANTE</p>
@@ -516,7 +515,7 @@
 
             <div class="content">
                 <div class="row mt-3">
-                    <div class="col-2">
+                    <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="tipo_documento" class="form-label">
                                 Tipo de documento: (*)
@@ -528,12 +527,12 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="form-group">
-                            <label for="numero_identificacion" class="form-label">
+                            <label for="numero_identificacion" class="form-label" name="numero_identificacion">
                                 Nº de identifiación: (*)
                             </label>
-                            <input type="text" class="form-control" name="numero_identificacion" id="numero_identificacion" placeholder="Ej: 12345678Z / Z1234567X"
+                            <input type="text" maxlength="9" class="form-control" name="numero_identificacion" id="numero_identificacion" placeholder="Ej: 12345678Z / Z1234567X"
                                 <?php
                                     if (isset($_POST['numero_identificacion'])) {
                                         echo ' value="'.$_POST['numero_identificacion'].'"';
@@ -542,7 +541,7 @@
                             >
                         </div>
                     </div>
-                    <div class="col-5">
+                    <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="nombre" class="form-label">
                                 Nombre: (*)
@@ -590,25 +589,25 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-3">
+                    <div class="col-12 col-lg-4">
                         <div class="form-group">
                             <label for="en_calidad_de" class="form-label">
                                 En calidad de: (*)
                             </label>
                             <select name="en_calidad_de" class="form-select" aria-label="Default select example">
-                                <option value="">Open this select menu</option>
-                                <option value="1" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == '1'): ?>selected<?php endif; ?> >One</option>
-                                <option value="2" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == '3'): ?>selected<?php endif; ?> >Three</option>
+                                <option value="">Representante</option>
+                                <option value="madre" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == 'madre'): ?>selected<?php endif; ?> >Madre</option>
+                                <option value="padre" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == 'padre'): ?>selected<?php endif; ?> >Padre</option>
+                                <option value="tutor_legal" <?php if (isset($_POST['en_calidad_de']) && $_POST['en_calidad_de'] == 'tutor_legal'): ?>selected<?php endif; ?> >Tutor legal</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-6 col-lg-4">
                         <div class="form-group">
                             <label for="telefono_fijo" class="form-label">
                                 Teléfono fijo:
                             </label>
-                            <input type="text" class="form-control" name="telefono_fijo" id="telefono_fijo" placeholder="920 000 000"
+                            <input type="text" maxlength="9" class="form-control" name="telefono_fijo" id="telefono_fijo" placeholder="920 000 000"
                                 <?php
                                     if (isset($_POST['telefono_fijo'])) {
                                         echo ' value="'.trim($_POST['telefono_fijo']).'"';
@@ -617,12 +616,12 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-6 col-lg-4">
                         <div class="form-group">
                             <label for="telefono_movil" class="form-label">
                                 Teléfono móvil: (*)
                             </label>
-                            <input type="text" class="form-control" name="telefono_movil" id="telefono_movil" placeholder="666 000 000"
+                            <input type="text"  maxlength="9" class="form-control" name="telefono_movil" id="telefono_movil" placeholder="612 345 678"
                                 <?php
                                     if (isset($_POST['telefono_movil'])) {
                                         echo ' value="'.trim($_POST['telefono_movil']).'"';
@@ -631,7 +630,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-5">
+                    <div class="col-12">
                         <div class="form-group">
                             <label for="email" class="form-label">
                                 Correo electrónico: (*)
@@ -659,10 +658,10 @@
                                 Tipo de vía: (*)
                             </label>
                             <select name="tipo_de_via" class="form-select" aria-label="Default select example">
-                                <option value="">Open this select menu</option>
-                                <option value="1" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == '1'): ?>selected<?php endif; ?> >One</option>
-                                <option value="2" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == '3'): ?>selected<?php endif; ?> >Three</option>
+                                <option value="">Vía del domicilio</option>
+                                <option value="calle" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == 'calle'): ?>selected<?php endif; ?> >Calle</option>
+                                <option value="avenida" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == 'avenida'): ?>selected<?php endif; ?> >Avenida</option>
+                                <option value="via" <?php if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == 'via'): ?>selected<?php endif; ?> >Vía</option>
                             </select>
                         </div>
                     </div>
@@ -697,7 +696,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="bloque" class="form-label">
                                 Bloque:
@@ -711,7 +710,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="escalera" class="form-label">
                                 Escalera:
@@ -725,7 +724,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="piso" class="form-label">
                                 Piso:
@@ -739,7 +738,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="portal" class="form-label">
                                 Portal:
@@ -753,7 +752,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="letra" class="form-label">
                                 Letra:
@@ -767,7 +766,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <div class="form-group">
                             <label for="puerta" class="form-label">
                                 Puerta:
@@ -784,7 +783,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-4">
+                    <div class="col-12 col-lg-6">
                         <div class="form-group">
                             <label for="complemento" class="form-label">
                                 Complemento: (*)
@@ -798,7 +797,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-12 col-lg-6">
                         <div class="form-group">
                             <label for="fecha" class="form-label">
                                 Fecha de nacimiento: (*)
@@ -812,7 +811,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-lg-4">
                         <div class="form-group">
                             <label for="pais" class="form-label">
                                 País: (*)
@@ -828,7 +827,7 @@
                             ?>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-6 col-lg-4">
                         <div class="form-group">
                             <label for="provincia" class="form-label">
                                 Provincia: (*)
@@ -845,28 +844,27 @@
                             </select>
                         </div>
                     </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col-3">
+                    <div class="col-6 col-lg-4">
                         <div class="form-group isla-hidden">
                             <label for="isla" class="form-label">
                                 Isla: (*)
                             </label>
                             <select name="isla" class="form-select" aria-label="Seleccionar isla">
                                 <option value="">Seleccione una opción.</option>
-                                <option value="Gran Canaria" <?php if (isset($_POST['isla']) && $_POST['isla'] == '1'): ?>selected<?php endif; ?> >Gran Canaria</option>
-                                <option value="Tenerife" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
-                                <option value="2" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
-                                <option value="2" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Two</option>
-                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
-                                <option value="3" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Three</option>
+                                <option value="gran-canaria" <?php if (isset($_POST['isla']) && $_POST['isla'] == '1'): ?>selected<?php endif; ?> >Gran Canaria</option>
+                                <option value="tenerife" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Tenerife</option>
+                                <option value="la-palma" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >La Palma</option>
+                                <option value="el-hierro" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >El Hierro</option>
+                                <option value="la-gomera" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >La Gomera</option>
+                                <option value="fuerteventura" <?php if (isset($_POST['isla']) && $_POST['isla'] == '2'): ?>selected<?php endif; ?> >Fuerteventura</option>
+                                <option value="lanzarote" <?php if (isset($_POST['isla']) && $_POST['isla'] == '3'): ?>selected<?php endif; ?> >Lanzarote</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-3">
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="municipio" class="form-label">
                                 Municipio: (*)
@@ -882,7 +880,7 @@
                             ?>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <!--<div class="col-3">
                         <div class="form-group">
                             <label for="localidad" class="form-label">
                                 Localidad: (*)
@@ -894,8 +892,8 @@
                                 <option value="3" <?php if (isset($_POST['localidad']) && $_POST['localidad'] == '3'): ?>selected<?php endif; ?> >Three</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="col-3">
+                    </div>-->
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="codigo_postal" class="form-label">
                                 Código postal: (*)
@@ -945,6 +943,10 @@
 
             <div class="content">
                 <p>Seleccione opción (seleccionar 1):</p>
+
+                <label for="ciencias" class="error" style="display:none;">* Please pick an option above</label>
+
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="ciencias" value="Ciencias de la salud" id="ciencias_de_la_salud" <?php if (isset($_POST['ciencias']) && $_POST['ciencias'] == 'Ciencias de la salud'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="ciencias_de_la_salud">
@@ -1074,6 +1076,9 @@
 
 
                 <p class="mt-3">Bloque 2 (seleccionar 1):</p>
+
+                <label for="bloque_ii" class="error" style="display:none;">* Please pick an option above</label>
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="bloque_ii" id="ingles_i" value="Primera lengua extranjera (inglés) I" <?php if (isset($_POST['bloque_ii']) && $_POST['bloque_ii'] == 'Primera lengua extranjera (inglés) I'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="ingles_i">
@@ -1088,6 +1093,9 @@
                 </div>
 
                 <p class="mt-3">Bloque 3 (seleccionar 1):</p>
+
+                <label for="bloque_iii" class="error" style="display:none;">* Please pick an option above</label>
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="bloque_iii" id="biologia_y_geologia" value="Biología y Geología" <?php if (isset($_POST['bloque_iii']) && $_POST['bloque_iii'] == 'Biología y Geología'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="biologia_y_geologia">
@@ -1101,7 +1109,11 @@
                     </label>
                 </div>
 
+
                 <p class="mt-3">Bloque 4 (seleccionar 1):</p>
+
+                <label for="bloque_iv" class="error" style="display:none;">* Please pick an option above</label>
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="bloque_iv" id="tecnologia_industrial_i" value="Tecnología Industrial I"  <?php if (isset($_POST['bloque_iv']) && $_POST['bloque_iv'] == 'Tecnología Industrial I'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="tecnologia_industrial_i">
@@ -1133,7 +1145,12 @@
                     </label>
                 </div>
 
+                
+
                 <p class="mt-3">Bloque 5 (seleccionar 1):</p>
+
+                <label for="bloque_v" class="error" style="display:none;">* Please pick an option above</label>
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="bloque_v" id="religion_catolica" value="Religión Católica" <?php if (isset($_POST['bloque_v']) && $_POST['bloque_v'] == 'Religión Católica'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="religion_catolica">
@@ -1160,62 +1177,62 @@
                 </p>
 
                 <div class="form-check representante mt-3">
-                    <input class="form-check-input" type="radio" name="consciente" id="es_consciente" value="Consciente" <?php if (isset($_POST['consciente']) && $_POST['consciente'] == 'Consciente'): ?>checked='checked'<?php endif; ?>>
-                    <label class="form-check-label" for="es_consciente">
-                        Consciente
+                    <input class="form-check-input" type="radio" name="consiente" id="es_consiente" value="Consiente" <?php if (isset($_POST['consiente']) && $_POST['consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
+                    <label class="form-check-label" for="es_consiente">
+                        Consiente
                     </label>
                 </div>
                 <div class="form-check representante">
-                    <input class="form-check-input" type="radio" name="consciente" id="no_consciente" value="No consciente" <?php if (isset($_POST['consciente']) && $_POST['consciente'] == 'No consciente'): ?>checked='checked'<?php endif; ?>>
-                    <label class="form-check-label" for="no_consciente">
-                        No consciente
+                    <input class="form-check-input" type="radio" name="consiente" id="no_consiente" value="No consiente" <?php if (isset($_POST['consiente']) && $_POST['consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
+                    <label class="form-check-label" for="no_consiente">
+                        No consiente
                     </label>
                 </div>
 
                 <div class="row mt-3">
-                    <p class="col-6">Página web del centro docente:</p>
-                    <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="pagina_consciente" id="pagina_es_consciente" value="Consciente" <?php if (isset($_POST['pagina_consciente']) && $_POST['pagina_consciente'] == 'Consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="pagina_es_consciente">
-                            Consciente
+                    <p class="col-12">Página web del centro docente:</p>
+                    <div class="col-4 col-lg-2 form-check">
+                        <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_es_consiente" value="Consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="pagina_es_consiente">
+                            Consiente
                         </label>
                     </div>
-                    <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="pagina_consciente" id="pagina_no_consciente" value="No consciente" <?php if (isset($_POST['pagina_consciente']) && $_POST['pagina_consciente'] == 'No consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="pagina_no_consciente">
-                            No consciente
-                        </label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <p class="col-6">App de alumnos y familias:</p>
-                    <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="app_consciente" id="app_es_consciente" value="Consciente" <?php if (isset($_POST['app_consciente']) && $_POST['app_consciente'] == 'Consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="app_es_consciente">
-                            Consciente
-                        </label>
-                    </div>
-                    <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="app_consciente" id="app_no_consciente" value="No consciente" <?php if (isset($_POST['app_consciente']) && $_POST['app_consciente'] == 'No consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="app_no_consciente">
-                            No consciente
+                    <div class="col-6 col-lg-2 form-check">
+                        <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_no_consiente" value="No consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="pagina_no_consiente">
+                            No consiente
                         </label>
                     </div>
                 </div>
 
-                <div class="row">
-                    <p class="col-6">Facebook:</p>
-                    <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="facebook_consciente" id="facebook_es_consciente" value="Consciente" <?php if (isset($_POST['facebook_consciente']) && $_POST['facebook_consciente'] == 'Consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="facebook_es_consciente">
-                            Consciente
+                <div class="row mt-3">
+                    <p class="col-12">App de alumnos y familias:</p>
+                    <div class="col-4 col-lg-2 form-check">
+                        <input class="form-check-input" type="radio" name="app_consiente" id="app_es_consiente" value="Consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="app_es_consiente">
+                            Consiente
                         </label>
                     </div>
-                    <div class="col-3 form-check">
-                        <input class="form-check-input" type="radio" name="facebook_consciente" id="facebook_no_consciente" value="No consciente" <?php if (isset($_POST['facebook_consciente']) && $_POST['facebook_consciente'] == 'No consciente'): ?>checked='checked'<?php endif; ?>>
-                        <label class="form-check-label" for="facebook_no_consciente">
-                            No consciente
+                    <div class="col-6 col-lg-2 form-check">
+                        <input class="form-check-input" type="radio" name="app_consiente" id="app_no_consiente" value="No consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="app_no_consiente">
+                            No consiente
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <p class="col-12">Facebook:</p>
+                    <div class="col-4 col-lg-2 form-check">
+                        <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_es_consiente" value="Consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="facebook_es_consiente">
+                            Consiente
+                        </label>
+                    </div>
+                    <div class="col-6 col-lg-2 form-check">
+                        <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_no_consiente" value="No consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
+                        <label class="form-check-label" for="facebook_no_consiente">
+                            No consiente
                         </label>
                     </div>
                 </div>
@@ -1276,5 +1293,9 @@
   
         </form>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>
