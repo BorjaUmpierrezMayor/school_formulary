@@ -476,7 +476,7 @@
 
                 /*
                  * Para prevenir el envío de información incorrecta deberíamos emplear jquery para validar de cara al usuario,
-                 * pero si queremos que no se nevíe solo deberíamos descarmar la siguiente línea:
+                 * pero si queremos que no se envíe solo deberíamos descarmar la siguiente línea:
                  */
                 if(!$valid_form) {
                 //header("Location: index.php");
@@ -983,8 +983,11 @@
                 ?>
 
             <p class="mt-3">Bloque 1 (seleccionar 6) (máximo 6). Se debe seleccionar por preferencia:</p>
+
+            <label for="bloque_i_list" class="error" style="display:none;">* Please pick an option above</label>
+
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="bloque_i_list[]" id="lengua_castellana_y_literatura_i" value="Lengua Castellana y Literatura I" 
+                    <input class="form-check-input checkbox-subject" type="checkbox" name="bloque_i_list" id="lengua_castellana_y_literatura_i" value="Lengua Castellana y Literatura I" 
                     <?php
                         if(isset($_POST['bloque_i_list'])) {
                             $bloque_i = $_POST['bloque_i_list'];
@@ -999,7 +1002,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="bloque_i_list[]" id="filosofia" value="Filosofía"
+                    <input class="form-check-input checkbox-subject" type="checkbox" name="bloque_i_list" id="filosofia" value="Filosofía"
                     <?php
                         if(isset($_POST['bloque_i_list'])) {
                             $bloque_i = $_POST['bloque_i_list'];
@@ -1014,7 +1017,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="bloque_i_list[]" id="educacion_fisica" value="Educación Física"
+                    <input class="form-check-input checkbox-subject" type="checkbox" name="bloque_i_list" id="educacion_fisica" value="Educación Física"
                     <?php
                         if(isset($_POST['bloque_i_list'])) {
                             $bloque_i = $_POST['bloque_i_list'];
@@ -1029,7 +1032,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="bloque_i_list[]" id="matematicas_i" value="Matemáticas I"
+                    <input class="form-check-input checkbox-subject" type="checkbox" name="bloque_i_list" id="matematicas_i" value="Matemáticas I"
                     <?php
                         if(isset($_POST['bloque_i_list'])) {
                             $bloque_i = $_POST['bloque_i_list'];
@@ -1044,7 +1047,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="bloque_i_list[]" id="fisica_y_quimica" value="Física y Química"
+                    <input class="form-check-input checkbox-subject" type="checkbox" name="bloque_i_list" id="fisica_y_quimica" value="Física y Química"
                     <?php
                         if(isset($_POST['bloque_i_list'])) {
                             $bloque_i = $_POST['bloque_i_list'];
@@ -1059,7 +1062,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="bloque_i_list[]" id="tutoria" value="Tutoría"
+                    <input class="form-check-input checkbox-subject" type="checkbox" name="bloque_i_list" id="tutoria" value="Tutoría"
                     <?php
                         if(isset($_POST['bloque_i_list'])) {
                             $bloque_i = $_POST['bloque_i_list'];

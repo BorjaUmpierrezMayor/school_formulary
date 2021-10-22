@@ -21,6 +21,10 @@ $(document).ready(function() {
   $.validator.addMethod("custom_regexnombreapellidocalle", function(value, element){
     return value.match(regexNombreYApellido);
   });
+
+  $.validator.addMethod("all_checkboxes_checked", function(value, element){
+    return $('.checkbox-subject:checked').length == $('.checkbox-subject').length;
+  })
     // Seleccionamos el form con el nombre "registration"
     $("form[name='registration']").validate({
       // Especificamos las reglas de validación
@@ -76,6 +80,10 @@ $(document).ready(function() {
         municipio: "required",
         codigo_postal: "required",
         ciencias: "required",
+        bloque_i_list:{
+          required: true,
+          all_checkboxes_checked: true
+        },
         bloque_ii: "required",
         bloque_iii: "required",
         bloque_iv: "required",
@@ -134,6 +142,10 @@ $(document).ready(function() {
         municipio: "Elija el municipio",
         codigo_postal: "Introduzca el código postal",
         ciencias: "Elija el itinerario a estudiar",
+        bloque_i_list:{
+          required: "Es necesario elegir estas asignaturas",
+          all_checkboxes_checked: "Debe seleccionar todas las asignaturas"
+        },
         bloque_ii: "Elija la segunda lengua a estudiar",
         bloque_iii: "Elija asignatura troncal",
         bloque_iv: "Elija asignatura optativa",
