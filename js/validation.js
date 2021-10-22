@@ -21,9 +21,9 @@ $(document).ready(function() {
   $.validator.addMethod("custom_regexnombreapellidocalle", function(value, element){
     return value.match(regexNombreYApellido);
   });
-    // It has the name attribute "registration"
+    // Seleccionamos el form con el nombre "registration"
     $("form[name='registration']").validate({
-      // Specify validation rules
+      // Especificamos las reglas de validación
       rules: {
         tipo_documento: "required",
         numero_identificacion: {
@@ -85,7 +85,7 @@ $(document).ready(function() {
 
       },
       
-      // Specify validation error messages
+      // Mensajes que se escriben en caso de error
       messages: {
         tipo_documento: "Elija el tipo de documento",
         numero_identificacion: {
