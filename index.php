@@ -114,9 +114,9 @@
             return $randomString;
         }
 
-        function subirArchivo($file) {
+        function subirArchivo($file,$num_id) {
             $dir_subida = 'etc/images/';
-            $fichero_subido = $dir_subida . basename($file['name']);
+            $fichero_subido = $dir_subida.$num_id.'-'.$file['name'];
 
             if (move_uploaded_file($file['tmp_name'], $fichero_subido)) {
                 return $file['name'];
@@ -507,17 +507,19 @@
                 /*
                  * En el caso en el que todas las condiciones se cumplan, se creará el fichero JSON.
                  */
-                if($valid_form) {
+                if(!$valid_form) {
                     $token = generateRandomString();
-                    $file = 'etc/solicitudes/solicitudes.json';
-                    $dni_file = subirArchivo($_FILES['archivo_dni']);
-                    $certificado_file =subirArchivo($_FILES['certificado_academico']);
+                    $file = 'etc/solicitudes/datos.json';
+                    $num_id = $_POST['numero_identificacion'];
+
+                    $dni_file = subirArchivo($_FILES['archivo_dni'],$num_id);
+                    $certificado_file = subirArchivo($_FILES['certificado_academico'],$num_id);
 
                     $post_array[$token] = array(
                         "Representante"                 => $_POST['representante'],
                         "Documento de identidad"        => array(
                             "Tipo de documento"             => $_POST['tipo_documento'],
-                            "Número de identificación"      => $_POST['numero_de_via']
+                            "Número de identificación"      => $num_id
                         ),
 
                         "Nombre"                        => $_POST['nombre'],
@@ -581,7 +583,7 @@
 
                     // Si ya existe el archivo solicitudes.json, añadimos el nuevo elemento.
                     if (file_exists($file)) {
-                        $solicitudes = file_get_contents("solicitudes/solicitudes.json");
+                        $solicitudes = file_get_contents($file);
                         $solicitudes_array = json_decode($solicitudes, true);
 
                         // Cargamos el fichero y eliminamos el último carácter "]" para reemplazarlo posteriormente.
