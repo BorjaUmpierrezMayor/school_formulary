@@ -484,7 +484,7 @@
             }
         ?>
 
-        <form action="index.php" method="post" enctype="multipart/form-data" name="registration">
+        <form action="index.php" method="post" enctype="multipart/form-data" name="registration" id="#registration">
             <h1>Solicitud de servicios</h1>
 
             <p class="title mt-3">DATOS ACTÚA COMO REPRESENTANTE</p>
@@ -841,7 +841,6 @@
 
                                 echo generarSelect($countries, $name, $id, $field);
                             ?>
-                            </select>
                         </div>
                     </div>
                     <div class="col-6 col-lg-4">
