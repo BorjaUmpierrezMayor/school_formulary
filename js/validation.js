@@ -1,6 +1,7 @@
 // Wait for the DOM to be ready
 $(document).ready(function() {
-    
+
+
   let regexNumeroIdentificacion = /((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]))/;
   let regexNumeroMovil = /(6|7)[0-9]{8}/;
   let regexNumeroFijo = /(8|9)[0-9]{8}/;;
@@ -153,6 +154,7 @@ $(document).ready(function() {
         archivo_dni: "El DNI del alumno es obligatorio",
         certificado_academico: "El certificado académico del alumno es obligatorio",
       },
+      
       // Make sure the form is submitted to the destination defined
       // in the "action" attribute of the form when valid
       submitHandler: function(form) {
