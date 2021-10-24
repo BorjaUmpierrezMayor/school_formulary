@@ -104,6 +104,27 @@
             return false;
         }
 
+        function generateRandomString($length = 10) {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+            return $randomString;
+        }
+
+        function subirArchivo($file) {
+            $dir_subida = 'etc/images/';
+            $fichero_subido = $dir_subida . basename($file['name']);
+
+            if (move_uploaded_file($file['tmp_name'], $fichero_subido)) {
+                return $file['name'];
+            }
+
+            return "";
+        }
+
         /*
         * Validamos los ficheros de la siguiente forma:
         *      1. Nos seguramos de que el archivo esté declarado isset($file);
@@ -113,7 +134,7 @@
         *      5. Para asegurarnos de que se vean todos los mensajes, el $error
         *         nos permitirá retornar falso una vez termine de recorrer todas las posibilidades.
         */
-        function validateFile($file,$nombre) {
+        function validateFile($file,$nombre,$message) {
             $valid_formats = Array ('jpg', 'png', 'doc', 'docx', 'txt', 'pdf', 'odt');
             $error = false;
 
@@ -123,15 +144,15 @@
 
                 $extension = pathinfo($name, PATHINFO_EXTENSION);
                 if (!in_array($extension, $valid_formats)) {
-                    echo "El archivo ".$nombre." tiene una extensión errónea: ".$extension.".<br />";
+                    $message.="El archivo ".$nombre." tiene una extensión errónea: ".$extension.".<br />";
                     $error = true;
                 }
                 if($size > 10485760) {
-                    echo "El archivo ".$nombre." tiene un tamaño superior a 10MB.<br />";
+                    $message.="El archivo ".$nombre." tiene un tamaño superior a 10MB.<br />";
                     $error = true;
                 }
                 if (preg_match('/[\'^£$%&*()}{#~?><>,|+¬-]/', $name)) {
-                    echo "El archivo ".$nombre." no puede tener carácteres especiales: ! \" # $ & ' * + , . / ; < - > ? @ [ ] ( ) ^ '\ { | } .<br />";
+                    $message.="El archivo ".$nombre." no puede tener carácteres especiales: ! \" # $ & ' * + , . / ; < - > ? @ [ ] ( ) ^ '\ { | } .<br />";
                     $error = true;
                 }
                 if($error) {
@@ -142,8 +163,14 @@
             return false;
         }
 
+        /*
+         * Es común encontrar en bases de datos como Firebase que los tokens o nombres de ficheros no tengan información reveladora,
+         * por lo cual, se tomó la decisión de usar un token aleatorio como nombre del fichero. Sería potencialmente peligroso usar
+         * como nombre de archivo el DNI, nombre y/o otros datos sensibles del usuario.
+         */
+
         function generarSelect($datos, $name, $id, $field){
-            $text = '<select name="'.$name.' id="'.$name.'" class="form-select" aria-label="Seleccionar '.$name.'">';
+            $text = '<select name="'.$name.'" id="'.$name.'" class="form-select" aria-label="Seleccionar '.$name.'">';
             $text .= '<option value="">Seleccione una opción.</option>';
             foreach ($datos as $dato) {
                 $text .= '<option value="'.$dato[$id].'">'.$dato[$field].'</option>';
@@ -152,6 +179,7 @@
             return $text;
         }
     ?>
+
     <div class="container">
         <?php
         /*
@@ -162,6 +190,7 @@
         */
 
             $valid_form = true;
+            $message = "";
 
             if(isset($_POST['cancel'])) {
                 header("Location: index.php");
@@ -182,20 +211,20 @@
                 //  *********** DATOS ACTÚA COMO REPRESENTANTE
                 // Representante:
                 if((!isset($_POST['representante']))) {
-                    echo "No ha seleccionado un representante."."<br/>";
+                    $message.="No ha seleccionado un representante."."<br/>";
                     $valid_form = false;
                 }
                 
                 //  *********** DATOS DEL REPRESENTANTE
                 // NO existe tipo de documento o ha sido seleccionado un tipo incorrecto.
                 if (!isset($_POST['tipo_documento']) || (test_input($_POST['tipo_documento']) !== "NIF" && test_input($_POST['tipo_documento'] !== "NIE"))) {
-                    echo "Seleccione un tipo de documento."."<br/>";
+                    $message.="Seleccione un tipo de documento."."<br/>";
                     $valid_form = false;
                 }
                 
                 // NO existe número de identificación.
                 if (!isset($_POST['numero_identificacion'])) {
-                    echo "No ha elegido un número de identificación válido."."<br/>";
+                    $message.="No ha elegido un número de identificación válido."."<br/>";
                     $valid_form = false;
                 }
                 
@@ -204,31 +233,31 @@
                         test_input($_POST['tipo_documento']),
                         test_input($_POST['numero_identificacion']))
                     ) {
-                    echo "El NIF o NIE no está bien definido o está vacío."."<br/>";
+                    $message.="El NIF o NIE no está bien definido o está vacío."."<br/>";
                     $valid_form = false;
                 }
 
                 // Nombre está vacío o no está en formato.
                 if (isset($_POST['nombre']) && !validarString($_POST['nombre']) ) {
-                    echo "Nombre vacío."."<br/>";
+                    $message.="Nombre vacío."."<br/>";
                     $valid_form = false;
                 }
 
                 // Primer apellido está vacío o no está en formato.
                 if (isset($_POST['primer_apellido']) && !validarString($_POST['primer_apellido']) ) {
-                    echo "Primer apellido vacío."."<br/>";
+                    $message.="Primer apellido vacío."."<br/>";
                     $valid_form = false;
                 }
 
                 // Segundo apellido está vacío o no está en formato.
                 if (isset($_POST['segundo_apellido']) && !validarString($_POST['segundo_apellido']) ) {
-                    echo "Segundo apellido vacío."."<br/>";
+                    $message.="Segundo apellido vacío."."<br/>";
                     $valid_form = false;
                 }
 
                 // En calidad de.
                 if (isset($_POST['en_calidad_de']) && test_input($_POST['en_calidad_de']) == "") {
-                    echo "En calidad de está vacío."."<br/>";
+                    $message.="En calidad de está vacío."."<br/>";
                     $valid_form = false;
                 }
 
@@ -237,7 +266,7 @@
                     $telefono_fijo = test_input(preg_replace('/\s+/', '', $_POST['telefono_fijo']));
 
                     if(!validarTelefonoFijo($telefono_fijo)) {
-                        echo "Por favor, introduzca un teléfono fijo válido."."<br/>";
+                        $message.="Por favor, introduzca un teléfono fijo válido."."<br/>";
                     }
                 }
 
@@ -246,7 +275,7 @@
                     $telefono_movil = test_input(preg_replace('/\s+/', '', $_POST['telefono_movil']));
 
                     if(!validarTelefonoMovil($telefono_movil)) {
-                        echo "Por favor, introduzca un teléfono móvil válido."."<br/>";
+                        $message.="Por favor, introduzca un teléfono móvil válido."."<br/>";
                         $valid_form = false;
                     }
                 }
@@ -254,7 +283,7 @@
                 // Email.
                 if (isset($_POST['email'])) {
                     if(!validarEMail(test_input($_POST['email']))) {
-                        echo "Por favor, introduzca un correo válido."."<br/>";
+                        $message.="Por favor, introduzca un correo válido."."<br/>";
                         $valid_form = false;
                     }
                 }
@@ -263,19 +292,19 @@
 
                 // Tipo de vía.
                 if (isset($_POST['tipo_de_via']) && $_POST['tipo_de_via'] == "") {
-                    echo "Por favor, seleccione un tipo de vía."."<br/>";
+                    $message.="Por favor, seleccione un tipo de vía."."<br/>";
                     $valid_form = false;
                 }
 
                 // Nombre de la vía.
                 if (isset($_POST['nombre_de_via']) && !validarString($_POST['nombre_de_via'])) {
-                    echo "Por favor, introduzca el nombre de la vía."."<br/>";
+                    $message.="Por favor, introduzca el nombre de la vía."."<br/>";
                     $valid_form = false;
                 }
 
                 // Número de la vía.
                 if (!isset($_POST['numero_de_via'])) {
-                    echo "Por favor, introduzca el número de la vía."."<br/>";
+                    $message.="Por favor, introduzca el número de la vía."."<br/>";
                     $valid_form = false;
                 }
 
@@ -283,7 +312,7 @@
                     $numero = intval($_POST['numero_de_via']);
 
                     if(!is_int($numero) || $numero < 1 || strlen($numero) > 3) {
-                        echo "Por favor, introduzca el número de la vía."."<br/>";
+                        $message.="Por favor, introduzca el número de la vía."."<br/>";
                         $valid_form = false;
                     }
                 }
@@ -299,32 +328,32 @@
 
                 // Bloque, escalera, piso, portal, letra y puerta.
                 if (isset($_POST['bloque']) && !test_input($_POST['bloque'])) {
-                    echo "Por favor, introduzca el bloque correctamente."."<br/>";
+                    $message.="Por favor, introduzca el bloque correctamente."."<br/>";
                 }
                 
                 if (isset($_POST['escalera']) && !test_input($_POST['escalera'])) {
-                    echo "Por favor, introduzca la escalera correctamente."."<br/>";
+                    $message.="Por favor, introduzca la escalera correctamente."."<br/>";
                 }
                 
                 if (isset($_POST['piso']) && !test_input($_POST['piso'])) {
-                    echo "Por favor, introduzca el piso correctamente."."<br/>";
+                    $message.="Por favor, introduzca el piso correctamente."."<br/>";
                 }
                 
                 if (isset($_POST['portal']) && !test_input($_POST['portal'])) {
-                    echo "Por favor, introduzca el portal correctamente."."<br/>";
+                    $message.="Por favor, introduzca el portal correctamente."."<br/>";
                 }
                 
                 if (isset($_POST['letra']) && !test_input($_POST['letra'])) {
-                    echo "Por favor, introduzca la letra correctamente."."<br/>";
+                    $message.="Por favor, introduzca la letra correctamente."."<br/>";
                 }
                 
                 if (isset($_POST['puerta']) && !test_input($_POST['puerta'])) {
-                    echo "Por favor, introduzca la puerta correctamente."."<br/>";
+                    $message.="Por favor, introduzca la puerta correctamente."."<br/>";
                 }
 
                 // Complemento.
                 if (isset($_POST['complemento']) && !test_input($_POST['complemento'])) {
-                    echo "Por favor, introduzca el complemento correctamente."."<br/>";
+                    $message.="Por favor, introduzca el complemento correctamente."."<br/>";
                     $valid_form = false;
                 }
 
@@ -336,39 +365,39 @@
 
                     // Consideramos una fecha válida si tiene 6 o más años de diferencia.
                     if($nacimiento > $validacion_fecha) {
-                        echo "Por favor, introduzca la fecha de nacimiento correcta."."<br/>";
+                        $message.="Por favor, introduzca la fecha de nacimiento correcta."."<br/>";
                         $valid_form = false;
                     }
                 }
 
                 // País, provincia, isla, municipio, localidad y código postal.
                 if (isset($_POST['pais']) && $_POST['pais'] == "") {
-                    echo "Por favor, seleccione un pais."."<br/>";
+                    $message.="Por favor, seleccione un pais."."<br/>";
                     $valid_form = false;
                 }
                 
                 if (isset($_POST['provincia']) && $_POST['provincia'] == "") {
-                    echo "Por favor, seleccione una provincia."."<br/>";
+                    $message.="Por favor, seleccione una provincia."."<br/>";
                     $valid_form = false;
                 }
                 
                 if (isset($_POST['isla']) && $_POST['isla'] == "") {
-                    echo "Por favor, seleccione una isla."."<br/>";
+                    $message.="Por favor, seleccione una isla."."<br/>";
                     $valid_form = false;
                 }
                 
                 if (isset($_POST['municipio']) && $_POST['municipio'] == "") {
-                    echo "Por favor, seleccione un municipio."."<br/>";
+                    $message.="Por favor, seleccione un municipio."."<br/>";
                     $valid_form = false;
                 }
                 
                 if (isset($_POST['localidad']) && $_POST['localidad'] == "") {
-                    echo "Por favor, seleccione una localidad."."<br/>";
+                    $message.="Por favor, seleccione una localidad."."<br/>";
                     $valid_form = false;
                 }
                 
                 if (isset($_POST['codigo_postal']) && $_POST['codigo_postal'] == "") {
-                    echo "Por favor, seleccione un código postal."."<br/>";
+                    $message.="Por favor, seleccione un código postal."."<br/>";
                     $valid_form = false;
                 }
 
@@ -377,24 +406,24 @@
                 // los valores introducidos no han sido modificados.
                 
                 if (isset($_POST['alumno_huerfano']) && $_POST['alumno_huerfano'] !== "El alumno es huérfano absoluto.") {
-                    echo "Error. El valor de alumno_huerfano ha sido modificado.".'<br />';
+                    $message.="Error. El valor de alumno_huerfano ha sido modificado.".'<br />';
                 }
                 
                 if (isset($_POST['alumno_tutelado']) && $_POST['alumno_tutelado'] !== "El alumno se encuentra en régimen de tutela y guarda por la Administración.") {
-                    echo "Error. El valor de alumno_tutelado ha sido modificado.".'<br />';
+                    $message.="Error. El valor de alumno_tutelado ha sido modificado.".'<br />';
                 }
 
 
                 //  *********** ALERGIAS, PATOLOGÍAS O DIETAS ESPECIALES
                 // Al ser un textarea simplemente comprobaremos que se ha escrito algo.
                 if (isset($_POST['otras_alergias']) && $_POST['otras_alergias'] == "") {
-                    echo "Por favor, termine de rellenar otras alergias."."<br/>";
+                    $message.="Por favor, termine de rellenar otras alergias."."<br/>";
                 }
 
                 //  *********** DATOS CADÉMICOS DEL ALUMNO o ALUMNA
                 // Ciencias.
                 if((!isset($_POST['ciencias']))) {
-                    echo "No ha seleccionado una asignatura de ciencias."."<br/>";
+                    $message.="No ha seleccionado una asignatura de ciencias."."<br/>";
                 }
                 
                 // Bloque I.
@@ -403,31 +432,31 @@
 
                 // Bloque I.
                 if(empty($_POST['bloque_i_list']) || (!empty($_POST['bloque_i_list']) && count($_POST['bloque_i_list']) < 6)) {
-                    echo "Debe seleccionar las 6 asignaturas del Bloque I en orden de preferencia.";
+                    $message.="Debe seleccionar las 6 asignaturas del Bloque I en orden de preferencia.";
                     $valid_form = false;
                 }
 
                 // Bloque II.
                 if((!isset($_POST['bloque_ii']))) {
-                    echo "No ha seleccionado ninguna opción en el BLOQUE_II."."<br/>";
+                    $message.="No ha seleccionado ninguna opción en el BLOQUE_II."."<br/>";
                     $valid_form = false;
                 }
 
                 // Bloque III.
                 if((!isset($_POST['bloque_iii']))) {
-                    echo "No ha seleccionado ninguna opción en el BLOQUE_III."."<br/>";
+                    $message.="No ha seleccionado ninguna opción en el BLOQUE_III."."<br/>";
                     $valid_form = false;
                 }
 
                 // Bloque IV.
                 if((!isset($_POST['bloque_iv']))) {
-                    echo "No ha seleccionado ninguna opción en el BLOQUE_IV."."<br/>";
+                    $message.="No ha seleccionado ninguna opción en el BLOQUE_IV."."<br/>";
                     $valid_form = false;
                 }
 
                 // Bloque IV.
                 if((!isset($_POST['bloque_v']))) {
-                    echo "No ha seleccionado ninguna opción en el BLOQUE_V."."<br/>";
+                    $message.="No ha seleccionado ninguna opción en el BLOQUE_V."."<br/>";
                     $valid_form = false;
                 }
 
@@ -435,25 +464,25 @@
 
                 // Consentimiento firmado:
                 if((!isset($_POST['consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el consciente."."<br/>";
+                    $message.="No ha seleccionado ninguna opción en el consciente."."<br/>";
                     $valid_form = false;
                 }
 
                 // Consentimiento Página web del centro docente:
                 if((!isset($_POST['pagina_consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el pagina_consciente."."<br/>";
+                    $message.="No ha seleccionado ninguna opción en el pagina_consciente."."<br/>";
                     $valid_form = false;
                 }
 
                 // Consentimiento App de alumnos y familias:
                 if((!isset($_POST['app_consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el app_consciente."."<br/>";
+                    $message.="No ha seleccionado ninguna opción en el app_consciente."."<br/>";
                     $valid_form = false;
                 }
 
                 // Consentimiento Facebook:
                 if((!isset($_POST['facebook_consciente']))) {
-                    echo "No ha seleccionado ninguna opción en el facebook_consciente."."<br/>";
+                    $message.="No ha seleccionado ninguna opción en el facebook_consciente."."<br/>";
                     $valid_form = false;
                 }
 
@@ -462,7 +491,7 @@
                 // DNI DEL ALUMNO:
                 // El error == 0 nos indica que no han habido errores de subida.
                 if(isset($_FILES['archivo_dni']) && $_FILES['archivo_dni']['error'] == 0) {
-                    if(!validateFile($_FILES['archivo_dni'],"DNI")) {
+                    if(!validateFile($_FILES['archivo_dni'],"DNI", $message)) {
                         $valid_form = false;
                     }
                 }
@@ -470,20 +499,109 @@
                 // CERTIFICADO:
                 // El error == 0 nos indica que no han habido errores de subida.
                     if(isset($_FILES['certificado_academico']) && $_FILES['certificado_academico']['error'] == 0) {
-                    if(!validateFile($_FILES['certificado_academico'],"CERTIFICADO ACADÉMICO")) {
+                    if(!validateFile($_FILES['certificado_academico'],"CERTIFICADO ACADÉMICO", $message)) {
                         $valid_form = false;
                     }
                 }
 
                 /*
-                 * Para prevenir el envío de información incorrecta deberíamos emplear jquery para validar de cara al usuario,
-                 * pero si queremos que no se nevíe solo deberíamos descarmar la siguiente línea:
+                 * En el caso en el que todas las condiciones se cumplan, se creará el fichero JSON.
                  */
-                if(!$valid_form) {
-                //header("Location: index.php");
+                if($valid_form) {
+                    $token = generateRandomString();
+                    $file = 'etc/solicitudes/solicitudes.json';
+                    $dni_file = subirArchivo($_FILES['archivo_dni']);
+                    $certificado_file =subirArchivo($_FILES['certificado_academico']);
+
+                    $post_array[$token] = array(
+                        "Representante"                 => $_POST['representante'],
+                        "Documento de identidad"        => array(
+                            "Tipo de documento"             => $_POST['tipo_documento'],
+                            "Número de identificación"      => $_POST['numero_de_via']
+                        ),
+
+                        "Nombre"                        => $_POST['nombre'],
+                        "Primer apellido"               => $_POST['primer_apellido'],
+                        "Segundo apellido"              => $_POST['segundo_apellido'],
+                        "En calidad de"                 => $_POST['en_calidad_de'],
+
+                        "Contacto"                     => array(
+                            "Teléfono fijo"                 => $_POST['telefono_fijo'],
+                            "Teléfono móvil"                => $_POST['telefono_movil'],
+                            "Correo electrónico"            => $_POST['email']
+                        ),
+
+                        "Dirección"                     => array(
+                            "Tipo de vía:"                  => $_POST['tipo_de_via'],
+                            "Nombre de la vía:"             => $_POST['nombre_de_via'],
+                            "Número:"                       => $_POST['numero_de_via'],
+                            "Bloque:"                       => $_POST['bloque'],
+                            "Escalera:"                     => $_POST['escalera'],
+                            "Piso:"                         => $_POST['piso'],
+                            "Portal:"                       => $_POST['portal'],
+                            "Letra:"                        => $_POST['letra'],
+                            "Puerta:"                       => $_POST['puerta'],
+                            "Complemento:"                  => $_POST['complemento']
+                        ),
+
+                        "Fecha de nacimiento"           => $_POST['fecha'],
+
+                        "Localidad"                     => array(
+                            "País:"                         => $_POST['pais'],
+                            "Provincia:"                    => $_POST['provincia'],
+                            "Isla:"                         => $_POST['isla'],
+                            "Municipio:"                    => $_POST['municipio'],
+                            "Localidad:"                    => $_POST['localidad'],
+                            "Código postal:"                => $_POST['codigo_postal']
+                        ),
+
+                        "Otras alergias"                => $_POST['otras_alergias'],
+                        
+                        "Datos académicos"              => array(
+                            "Ciencias"                      => $_POST['ciencias'],
+                            "Bloque I"                      => $_POST['bloque_i_list'],
+                            "Bloque II"                     => $_POST['bloque_ii'],
+                            "Bloque III"                    => $_POST['bloque_iii'],
+                            "Bloque VI"                     => $_POST['bloque_iv'],
+                            "Bloque V"                      => $_POST['bloque_v']
+                        ),
+
+                        "Medios de difusión"            => array(
+                            "Consentimiento"                => $_POST['consciente'],
+                            "Página web"                    => $_POST['pagina_consciente'],
+                            "App familiar"                  => $_POST['app_consciente'],
+                            "Facebook"                      => $_POST['facebook_consciente']
+                        ),
+
+                        "Docuemtnos adjuntos"           => array(
+                            "DNI"                           => $dni_file,
+                            "Certificado"                   => $certificado_file
+                        )
+                    );
+
+                    // Si ya existe el archivo solicitudes.json, añadimos el nuevo elemento.
+                    if (file_exists($file)) {
+                        $solicitudes = file_get_contents("solicitudes/solicitudes.json");
+                        $solicitudes_array = json_decode($solicitudes, true);
+
+                        // Cargamos el fichero y eliminamos el último carácter "]" para reemplazarlo posteriormente.
+                        $fh = fopen($file, 'r+');
+                        $stat = fstat($fh);
+                        ftruncate($fh, $stat['size']-1);
+                        fclose($fh); 
+
+                        $json = json_encode($post_array);
+                        // Añadimos el elemento JSON nuevo, con una coma como separador y cerramos el fichero JSON.
+                        file_put_contents($file, ",".$json."]", FILE_APPEND | LOCK_EX);
+                    } else {
+                        // Si no existe, lo creamos.
+                        $json = json_encode($post_array);
+                        // Añadimos el elemento JSON nuevo con los corchetes para abrir y cerrar el array de solicitudes.
+                        file_put_contents($file, "[".$json."]", FILE_APPEND | LOCK_EX);
+                    }
                 }
             }
-        ?>
+            ?>
 
         <form action="index.php" method="post" enctype="multipart/form-data">
             <h1>Solicitud de servicios</h1>
@@ -1078,7 +1196,7 @@
                     <input class="form-check-input" type="radio" name="bloque_ii" id="ingles_i" value="Primera lengua extranjera (inglés) I" <?php if (isset($_POST['bloque_ii']) && $_POST['bloque_ii'] == 'Primera lengua extranjera (inglés) I'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="ingles_i">
                         Primera lengua extranjera (inglés) I
-                    </label>
+                    </label>    
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="bloque_ii" id="italiano_i" value="Primera lengua extranjera (italiano) I" <?php if (isset($_POST['bloque_ii']) && $_POST['bloque_ii'] == 'Primera lengua extranjera (italiano) I'): ?>checked='checked'<?php endif; ?>>
@@ -1276,5 +1394,10 @@
   
         </form>
     </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="js/validation.js"></script>
+
 </body>
 </html>
