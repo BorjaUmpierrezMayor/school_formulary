@@ -508,6 +508,8 @@
                         Representante
                     </label>
                 </div>
+                <br>
+                <label for="representante" class="error" style="display:none;">* Please pick an option above</label>
             </div>
 
             
@@ -652,7 +654,7 @@
 
             <div class="content">
                 <div class="row mt-3">
-                    <div class="col-3">
+                    <div class="col-12 col-lg-3">
                         <div class="form-group">
                             <label for="tipo_de_via" class="form-label">
                                 Tipo de vía: (*)
@@ -665,7 +667,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-7">
                         <div class="form-group">
                             <label for="nombre_de_via" class="form-label">
                                 Nombre de vía: (*)
@@ -679,7 +681,7 @@
                                 >
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-5">
                         <div class="form-group">
                             <label for="numero_de_via" class="form-label">
                                 Número: (*)
@@ -1178,7 +1180,7 @@
                     De acuerdo con el Reglamento General de Protección de Datos y la Ley Orgánica 3 / 2018, de 5 de diciembre, de Protección de Datos Personales y Garantías de los Derechos Digitales, mediante la firma del presente documento se presta voluntariamente el consentimiento inequivoco e informado y se autoriza expresamente al centro docente al "tratamiento de imagen / voz de actividades de los centros de titularidad pública", mediante los siguientes medios (sólo se extenderá la difusión de imágenes / voz) por los medios expresados marcados a continuación.
                 </p>
 
-                <div class="form-check representante mt-3">
+                <div class="form-check representante col-12">
                     <input class="form-check-input" type="radio" name="consiente" id="es_consiente" value="Consiente" <?php if (isset($_POST['consiente']) && $_POST['consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                     <label class="form-check-label" for="es_consiente">
                         Consiente
@@ -1193,13 +1195,13 @@
 
                 <div class="row mt-3">
                     <p class="col-12">Página web del centro docente:</p>
-                    <div class="col-4 col-lg-2 form-check">
+                    <div class="col-12 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_es_consiente" value="Consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="pagina_es_consiente">
                             Consiente
                         </label>
                     </div>
-                    <div class="col-6 col-lg-2 form-check">
+                    <div class="col-12 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="pagina_consiente" id="pagina_no_consiente" value="No consiente" <?php if (isset($_POST['pagina_consiente']) && $_POST['pagina_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="pagina_no_consiente">
                             No consiente
@@ -1209,13 +1211,13 @@
 
                 <div class="row mt-3">
                     <p class="col-12">App de alumnos y familias:</p>
-                    <div class="col-4 col-lg-2 form-check">
+                    <div class="col-12 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="app_consiente" id="app_es_consiente" value="Consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="app_es_consiente">
                             Consiente
                         </label>
                     </div>
-                    <div class="col-6 col-lg-2 form-check">
+                    <div class="col-12 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="app_consiente" id="app_no_consiente" value="No consiente" <?php if (isset($_POST['app_consiente']) && $_POST['app_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="app_no_consiente">
                             No consiente
@@ -1225,13 +1227,13 @@
 
                 <div class="row mt-3">
                     <p class="col-12">Facebook:</p>
-                    <div class="col-4 col-lg-2 form-check">
+                    <div class="col-12 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_es_consiente" value="Consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'Consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="facebook_es_consiente">
                             Consiente
                         </label>
                     </div>
-                    <div class="col-6 col-lg-2 form-check">
+                    <div class="col-12 col-lg-2 form-check">
                         <input class="form-check-input" type="radio" name="facebook_consiente" id="facebook_no_consiente" value="No consiente" <?php if (isset($_POST['facebook_consiente']) && $_POST['facebook_consiente'] == 'No consiente'): ?>checked='checked'<?php endif; ?>>
                         <label class="form-check-label" for="facebook_no_consiente">
                             No consiente
@@ -1266,21 +1268,21 @@
                 </div>
 
                 <div class="row">
-                    <p class="col-7 text-justify">DNI del alumno o alumna (o de los padres, madres o tutores legales de alumnado sin DNI) (SOLO ALUMNADO NUEVO).</p>
-                    <div class="col-5 custom-file">
+                    <p class="col-12 col-lg-7 text-justify">DNI del alumno o alumna (o de los padres, madres o tutores legales de alumnado sin DNI) (SOLO ALUMNADO NUEVO).</p>
+                    <div class="col-12 col-lg-5 custom-file">
                         <div class="row">
-                            <input type="file" class="col-7 custom-file-input hidden-input" name="archivo_dni" id="archivo_dni">
-                            <label class="col-5 btn btn-primary custom-file-label" for="archivo_dni">Elegir archivo...</label>
+                            <input type="file" class="col-lg-7 custom-file-input hidden-input" name="archivo_dni" id="archivo_dni">
+                            <label class="col-12 col-lg-5 btn btn-primary custom-file-label" for="archivo_dni">Elegir archivo...</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <p class="col-7 text-justify">Para el alumnado procediente de otros centros, certificación académica del centro de origen en el que se especifique la promoción de curso o la terminación de estudios con propuesta para titulación.</p>
-                    <div class="col-5 custom-file">
+                    <p class="col-12 col-lg-7 text-justify">Para el alumnado procediente de otros centros, certificación académica del centro de origen en el que se especifique la promoción de curso o la terminación de estudios con propuesta para titulación.</p>
+                    <div class="col-12 col-lg-5 custom-file">
                         <div class="row">
-                            <input type="file" class="col-7 custom-file-input hidden-input" name="certificado_academico" id="certificado_academico">
-                            <label class="col-5 btn btn-primary custom-file-label" for="certificado_academico">Elegir archivo...</label>
+                            <input type="file" class="col-lg-7 custom-file-input hidden-input" name="certificado_academico" id="certificado_academico">
+                            <label class="col-12 col-lg-5 btn btn-primary custom-file-label" for="certificado_academico">Elegir archivo...</label>
                         </div>
                     </div>
                 </div>

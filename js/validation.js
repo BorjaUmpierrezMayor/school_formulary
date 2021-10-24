@@ -30,6 +30,7 @@ $(document).ready(function() {
     $("form[name='registration']").validate({
       // Especificamos las reglas de validación
       rules: {
+        representante: "required",
         tipo_documento: "required",
         numero_identificacion: {
             required: true,
@@ -96,6 +97,7 @@ $(document).ready(function() {
       
       // Mensajes que se escriben en caso de error
       messages: {
+        representante: "Elija el tipo de representante",
         tipo_documento: "Elija el tipo de documento",
         numero_identificacion: {
           required: "El DNI del alumno es obligatorio",
