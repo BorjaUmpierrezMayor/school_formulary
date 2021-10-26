@@ -5,7 +5,7 @@ $(document).ready(function() {
   let regexNumeroIdentificacion = /((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]))/;
   let regexNumeroMovil = /(6|7)[0-9]{8}/;
   let regexNumeroFijo = /(8|9)[0-9]{8}/;;
-  let regexNombreYApellido = /^[a-zA-Z ]{1,30}$/;
+  let regexNombreYApellido = /^[a-zA-Z áéíóú]{1,30}$/;
 
   $.validator.addMethod("custom_regexidentificacion", function(value, element){
     return value.match(regexNumeroIdentificacion);
@@ -48,6 +48,10 @@ $(document).ready(function() {
           required: true,
           custom_regexnombreapellidocalle: true
         },
+        /*en_calidad_de: {
+          required: function(element){
+            return $('#tutor').val() != "";
+        },*/
         en_calidad_de: "required",
         telefono_movil: {
           required: true,
